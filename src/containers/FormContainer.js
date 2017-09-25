@@ -3,6 +3,7 @@ import CheckboxOrRadioGroup from '../components/CheckboxOrRadioGroup';
 import SingleInput from '../components/SingleInput';
 import TextArea from '../components/TextArea';
 import Select from '../components/Select';
+import axios from 'axios'
 
 class FormContainer extends Component {
     constructor(props) {
@@ -28,26 +29,40 @@ class FormContainer extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     }
     componentDidMount() {
-        fetch('public/data/fake_db.json', {
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
+        axios.get(`https://raw.githubusercontent.com/ganyanlins/api/master/react/self-react-webpack`)
+            .then(res => {
                 this.setState({
-                    ownerName: data.ownerName,
-                    petSelections: data.petSelections,
-                    selectedPets: data.selectedPets,
-                    ageOptions: data.ageOptions,
-                    ownerAgeRangeSelection: data.ownerAgeRangeSelection,
-                    siblingOptions: data.siblingOptions,
-                    siblingSelection: data.siblingSelection,
-                    currentPetCount: data.currentPetCount,
-                    description: data.description
+                    ownerName: res.data.ownerName,
+                    petSelections: res.data.petSelections,
+                    selectedPets: res.data.selectedPets,
+                    ageOptions: res.data.ageOptions,
+                    ownerAgeRangeSelection: res.data.ownerAgeRangeSelection,
+                    siblingOptions: res.data.siblingOptions,
+                    siblingSelection: res.data.siblingSelection,
+                    currentPetCount: res.data.currentPetCount,
+                    description: res.data.description
                 });
             });
+        // fetch('public/data/fake_db.json', {
+        //     headers : {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     }
+        // })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.setState({
+    //                 ownerName: data.ownerName,
+    //                 petSelections: data.petSelections,
+    //                 selectedPets: data.selectedPets,
+    //                 ageOptions: data.ageOptions,
+    //                 ownerAgeRangeSelection: data.ownerAgeRangeSelection,
+    //                 siblingOptions: data.siblingOptions,
+    //                 siblingSelection: data.siblingSelection,
+    //                 currentPetCount: data.currentPetCount,
+    //                 description: data.description
+    //             });
+    //         });
     }
     handleFullNameChange(e) {
         this.setState({ ownerName: e.target.value }, () => console.log('name:', this.state.ownerName));

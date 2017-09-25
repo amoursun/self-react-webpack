@@ -1,21 +1,18 @@
-// var webpack = require('webpack');
-// var path = require('path');
-// var fs = require('fs');
-// var ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const webpack = require('webpack');
+// const path = require('path');
+// const fs = require('fs');
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var host = '127.0.0.1';
-// var port = '8800';
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const host = '127.0.0.1';
+// const port = '8800';
 //
 // module.exports = {
 //     //页面入口文件配置
-//     // entry: [
-//     //     "babel-polyfill",
-//     //     path.resolve(__dirname, "src/index.js")
-//     // ],
-//     entry: {
-//         index: './src/index.js'
-//     },
+//     entry: [
+//         "babel-polyfill",
+//         path.resolve(__dirname, "src/index.js")
+//     ],
 //     output: {
 //         path: path.resolve(__dirname, 'build'),
 //         filename: 'bundle.js'
@@ -148,25 +145,18 @@
 //         noInfo: false
 //     }
 // };
-var path = require('path');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
     //页面入口文件配置
-    // entry: [
-    //     "babel-polyfill",
-    //     path.resolve(__dirname, "src/index.js")
-    // ],
-    entry: {
-        index: './src/index.js'
-    },
+    entry: [
+        "babel-polyfill",
+        path.resolve(__dirname, "src/index.js")
+    ],
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx'],
-        // 提高webpack搜索的速度
-        alias: {}
     },
     module: {
         //加载器配置
@@ -189,7 +179,7 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 2048,
+                        limit: 2048000000000000000000000000,
                         name: 'images/[name].[ext]?[hash]'
                     }
                 }]

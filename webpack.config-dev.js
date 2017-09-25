@@ -13,9 +13,6 @@ module.exports = {
         "babel-polyfill",
         path.resolve(__dirname, "./src/index.js")
     ],
-    // entry: {
-    //    index: './src/index.js'
-    // },
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
@@ -29,10 +26,8 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                // loader: 'style-loader!css-loader!sass-loader!postcss-loader'
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    // resolve-url-loader may be chained before sass-loader if necessary
                     use: ['css-loader?minimize', 'postcss-loader', 'sass-loader']
                 })
             },
@@ -133,6 +128,6 @@ module.exports = {
         // 实时刷新
         inline: true,
         // 隐藏 webpack 包 bundle 信息，错误和警告仍然会显示。
-        noInfo: false
+        noInfo: true
     }
 };

@@ -34,9 +34,7 @@ class Comment extends Component {
 }
 
 class CommentList extends Component {
-    // static defaultProps = {
-    //     comments: []
-    // };
+
     constructor(props) {
         super(props);
         this.close = this.close.bind(this);
