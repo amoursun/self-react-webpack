@@ -25,6 +25,10 @@ module.exports = {
                 loader: 'style-loader!css-loader?minimize'
             },
             {
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
+            },
+            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',

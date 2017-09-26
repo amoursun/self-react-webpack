@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 import axios from 'axios';
-const fs = require('browserify-fs');
-const path = __dirname + 'public/data/';
-
-console.log(fs);
+// import cjson from './Comment.json';
+// const fs = require('browserify-fs');
 
 // const comments = [
 //     {username: 'Jerry', content: '练兵备战强势推进，训战一体疾风劲吹', date: 15000020338353},
@@ -39,26 +37,17 @@ class CommentApp extends Component {
         if (!comment.username) return alert('请输入用户名');
         if (!comment.content) return alert('请输入评论内容');
 
-        // fs.readFile('./public/data/Comment.json',function(err,data){
-        //     var jsonObj=JSON.parse(data);
+        // fs.readFile(cjson, '',function(err,data){
+        //     var jsonObj = data === undefined ? [] : JSON.parse(data);
         //     jsonObj.push(comment);
-        //     fs.rmdir('./public/data/Comment.json', function (err) {
+        //     fs.rmdir(cjson, function (err) {
         //         console.log(err)
-        //         fs.writeFileSync('./public/data/Comment.json', JSON.stringify(jsonObj));
+        //         fs.writeFile(cjson, JSON.stringify(jsonObj), {flag: 'w+'}, function () {
+        //             console.log('追加内容完成');
+        //         });
         //     });
         //
         // });
-        fs.readFile(path + 'comment.json', '',function(err,data){
-            var jsonObj = data === undefined ? [] : JSON.parse(data);
-            jsonObj.push(comment);
-            fs.rmdir(path + 'comment.json', function (err) {
-                console.log(err)
-                fs.writeFile(path + 'comment.json', JSON.stringify(jsonObj), {flag: 'w+'}, function () {
-                    console.log('追加内容完成');
-                });
-            });
-
-        });
 
         this.state.comments.push(comment);
         this.setState({
