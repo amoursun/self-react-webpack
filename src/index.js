@@ -10,6 +10,7 @@ import About from './pages/About/About';
 import Contacts from './pages/Contacts/Contacts';
 import Cast from './pages/Cast/Cast';
 import Concept from './pages/Concept/Concept';
+import Comments from './pages/Comments/Comments';
 
 ReactDOM.render(
     <Router history={hashHistory}>
@@ -20,6 +21,7 @@ ReactDOM.render(
             <Route path="/contacts" component={Contacts} />
             <Route path="/cast" component={Cast} />
             <Route path="/concept" component={Concept} />
+            <Route path="/comments" component={Comments} />
         </Route>
     </Router>,
     document.getElementById('root')

@@ -1,22 +1,12 @@
 import React, {Component} from 'react';
-
-
-class ContentLists extends Component {
-    render() {
-        return(
-            <div className="nav-item">
-                哈哈哈哈哈哈哈哈哈哈哈哈(2333333333333333333)
-            </div>
-        )
-    }
-}
+import ContentBegin from './ContentBegin/ContentBegin';
+import MutipleContent from './MutipleContent/MutipleContent';
 
 class GuidanceContent extends Component {
     render() {
         return(
             <div className="nav-content">
-                <h2>高级指引内容</h2>
-                <ContentLists />
+                { !this.props.content ? <ContentBegin /> : <MutipleContent />}
             </div>
         )
     }

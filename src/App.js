@@ -17,6 +17,7 @@ class App extends Component {
                     <li><Link to="/contacts" activeClassName="active">Contacts</Link></li>
                     <li><Link to="/cast" activeStyle={{color: 'yellow'}}>Cast</Link></li>
                     <li><Link to="/concept" activeStyle={{color: 'purple'}}>Concept</Link></li>
+                    <li><Link to="/comments" activeStyle={{color: 'coral'}}>Comments</Link></li>
                 </ul>
             </div>
             {this.props.children}

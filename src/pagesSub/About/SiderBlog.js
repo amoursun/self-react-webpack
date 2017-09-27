@@ -35,17 +35,17 @@ class Blog extends Component {
 
 
 const posts = [
-    {id: 1, spot: false, title: 'One', content: 'Welcome Red'},
-    {id: 2, spot: false, title: 'Two', content: 'Welcome Orange'},
-    {id: 3, spot: false, title: 'Three', content: 'Welcome Yellow'},
-    {id: 4, spot: false, title: 'Four', content: 'Welcome Purple'},
-    {id: 5, spot: false, title: 'Five', content: 'Welcome Green'},
-    {id: 6, spot: false, title: 'Six', content: 'Welcome blue'},
-    {id: 7, spot: false, title: 'Seven', content: 'Welcome #1a498e'},
-    {id: 8, spot: false, title: 'Eight', content: 'Welcome #daa520'},
-    {id: 9, spot: false, title: 'Nine', content: 'Welcome Coral'},
-    {id: 10, spot: false, title: 'Ten', content: 'Welcome Aqua'},
-    {id: 11, spot: false, title: 'Eleven', content: 'Welcome Navy'}
+    {id: 1, title: 'One', content: 'Welcome Red'},
+    {id: 2, title: 'Two', content: 'Welcome Orange'},
+    {id: 3, title: 'Three', content: 'Welcome Yellow'},
+    {id: 4, title: 'Four', content: 'Welcome Purple'},
+    {id: 5, title: 'Five', content: 'Welcome Green'},
+    {id: 6, title: 'Six', content: 'Welcome blue'},
+    {id: 7, title: 'Seven', content: 'Welcome #1a498e'},
+    {id: 8, title: 'Eight', content: 'Welcome #daa520'},
+    {id: 9, title: 'Nine', content: 'Welcome Coral'},
+    {id: 10, title: 'Ten', content: 'Welcome Aqua'},
+    {id: 11, title: 'Eleven', content: 'Welcome Navy'}
 ];
 
 class SiderBlog extends Component {
@@ -68,9 +68,10 @@ class SiderBlog extends Component {
 
     handleChange(index) {
         this.state.postsState[index - 1].spot = !this.state.postsState[index - 1].spot;
-        // if (this.state.postsState[index - 1].select) {
-        //     this.state.postsState[index - 1].select = !this.state.postsState[index - 1].spot;
-        // }
+        if (this.state.postsState[index - 1].select) {
+            this.state.postsState[index - 1].select = !this.state.postsState[index - 1].spot;
+            this.props.showChange();
+        }
         this.setState({
             postsState: this.state.postsState
         });
