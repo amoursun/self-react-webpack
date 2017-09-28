@@ -2,25 +2,25 @@ import React, { Component } from 'react'
 
 export default (WrappedComponent, name) => {
   class LocalStorageActions extends Component {
-    constructor () {
-      super()
-      this.state = { data: null }
+    constructor (props) {
+      super(props);
+      this.state = { data: null };
     }
 
     componentWillMount () {
       let data = localStorage.getItem(name)
       try {
-        this.setState({ data: JSON.parse(data) })
+        this.setState({ data: JSON.parse(data) });
       } catch (e) {
-        this.setState({ data })
+        this.setState({ data });
       }
     }
 
     saveData (data) {
       try {
-        localStorage.setItem(name, JSON.stringify(data))
+        localStorage.setItem(name, JSON.stringify(data));
       } catch (e) {
-        localStorage.setItem(name, `${data}`)
+        localStorage.setItem(name, `${data}`);
       }
     }
 
@@ -33,5 +33,5 @@ export default (WrappedComponent, name) => {
       )
     }
   }
-  return LocalStorageActions
+  return LocalStorageActions;
 }

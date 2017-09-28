@@ -1,57 +1,77 @@
-function deepCopy(obj) {
-	var newObj = obj.constructor === Array ? [] : {};
+const FunObj = {
+    deepCopy: function (obj) {
+        var newObj = obj.constructor === Array ? [] : {};
 
-	for (var key in obj) {
-		newObj[key] = typeof obj[key] === "object" ? deepCopy(obj[key]) : obj[key];
-	}	
+        for (var key in obj) {
+            newObj[key] = typeof obj[key] === "object" ? deepCopy(obj[key]) : obj[key];
+        }
 
-	return newObj;
-}
+        return newObj;
+    },
 
-function isRotateStr(bar, foo) {
-	if(bar.length != foo.length) {
-		return false;
-	}
+    isRotateStr: function (bar, foo) {
+        if (bar.length != foo.length) {
+            return false;
+        }
 
-	var baz = bar + bar;
+        var baz = bar + bar;
 
-	if(baz.indexOf(foo) != -1) {
-		return true
-	}else {
-		return false
-	}
-}
+        if (baz.indexOf(foo) != -1) {
+            return true
+        } else {
+            return false
+        }
+    },
 
-function strSort(str) {
-	return str.split("").sort((a, b) => a.charCodeAt() > b.charCodeAt()).join("");
-}
+    strSort: function (str) {
+        return str.split("").sort((a, b) => a.charCodeAt() > b.charCodeAt()).join("");
+    },
+    split: function (str, boz) {
+        var arr = [];
+        var bozLength = boz.length;
+        var pointer = 0;
 
-function split(str, boz) {
-	var arr = [];
-	var bozLength = boz.length;
-	var pointer = 0;
+        while (str.indexOf(boz) != -1) {
+            var index = str.indexOf(boz);
+            arr.push(str.substr(pointer, index));
+            str = str.slice(index + bozLength);
+        }
 
-	while(str.indexOf(boz) != -1) {
-		var index = str.indexOf(boz);
-		arr.push(str.substr(pointer, index));
-		str = str.slice(index + bozLength);
-	}
+        arr.push(str);
 
-	arr.push(str);
+        return arr;
+    },
 
-	return arr;
-}
+    searchClass: function (element) {
+        let classes = [];
 
-function searchClass(element) {
-    let classes = [];
+        if (element.getAttribute('class')) {
+            arr = arr.concat(element.getAttribute('class').split(' '));
+        }
 
-    if(element.getAttribute('class')) {
-        arr = arr.concat(element.getAttribute('class').split(' '));
+        Array.prototype.slice.call(element.children).forEach((elem) => {
+            searchClass(elem);
+        });
+
+        return new Set(arr);
+    },
+
+    ChangeTime: function (time) {
+        let showTime = '';
+
+        showTime = time > 86400
+            ? `${Math.round(time / 86400)} 天前`
+            : ( time > 3600
+                ? `${Math.round(time / 3600)} 小时前`
+                : ( time > 60
+                        ? `${Math.round(time / 60)} 分钟前`
+                        : `${Math.round(Math.max(time, 1))} 秒前`
+                )
+            );
+
+        return showTime;
     }
 
-    Array.prototype.slice.call(element.children).forEach((elem) => {
-        searchClass(elem);
-    });
+};
 
-    return new Set(arr);
-}
+export default FunObj;

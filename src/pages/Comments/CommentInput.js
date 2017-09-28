@@ -102,7 +102,7 @@ class CommentInput extends Component {
 CommentInput.propTypes = {
     onSubmit: PropTypes.func,
     data: PropTypes.any,
-    saveData: PropTypes.func.isRequired
+    saveData: PropTypes.func
 }
 
 CommentInput = wrapWithLoadData(CommentInput, 'username');
