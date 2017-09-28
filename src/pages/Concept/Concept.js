@@ -9,12 +9,19 @@ class Concept extends Component {
         this.state = {
             key: ''
         };
-
+        this.select = this.select.bind(this);
     }
+
+    select(index) {
+        this.setState({
+            key: index
+        })
+    }
+
     render () {
        return (
            <div className="guidance">
-               <SeniorGuidance />
+               <SeniorGuidance selectContent={this.state.key} selectChange={this.select}/>
                <GuidanceContent content={this.state.key}/>
            </div>
        )

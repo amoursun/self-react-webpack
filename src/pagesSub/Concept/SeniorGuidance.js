@@ -38,15 +38,15 @@ class GuidanceLists extends Component {
 }
 
 const names = [
-    {id: 1, name: 'Refs & DOM', title: 'one'},
-    {id: 2, name: '非受控组件', title: 'two'},
-    {id: 3, name: '性能优化', title: 'three'},
+    {id: 1, name: 'Refs & DOM(Refs-DOM)', title: 'one'},
+    {id: 2, name: '非受控组件(Comp-UnControl)', title: 'two'},
+    {id: 3, name: '性能优化(Optimize Update)', title: 'three'},
     {id: 4, name: 'Reconciliation', title: 'four'},
     {id: 5, name: 'Context', title: 'five'},
     {id: 6, name: 'Web Components', title: 'six'},
-    {id: 7, name: '高阶组件', title: 'seven'},
-    {id: 8, name: '与第三方库协同', title: 'eight'},
-    {id: 9, name: '可访问性', title: 'nine'}
+    {id: 7, name: '高阶组件(Higher Components)', title: 'seven'},
+    {id: 8, name: '与第三方库协同(Other Libraries)', title: 'eight'},
+    {id: 9, name: '可访问性(Accessibility)', title: 'nine'}
 ];
 
 class SeniorGuidance extends Component {
@@ -66,6 +66,7 @@ class SeniorGuidance extends Component {
     // }
 
     handleSelect(key) {
+        this.props.selectChange(key);
         this.state.names.map((nameSelect, index) => {
             if (key - 1 === index) {
                 nameSelect.select = true;
@@ -80,6 +81,7 @@ class SeniorGuidance extends Component {
     }
 
     initChange() {
+        this.props.selectChange();
         this.state.names.map((name) => {
             name.select = false;
         })

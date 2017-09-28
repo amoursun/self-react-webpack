@@ -1,26 +1,33 @@
 import React, {Component} from 'react';
+import Accessibility from './Accessibility';
+import CompUnControl from './Comp-UnControl';
+import Context from './Context';
+import HigherComponents from './Higher-Components';
+import OptimizeUpdate from './Optimize-Update';
+import OtherLibraries from './Other-Libraries';
+import Reconciliation from './Reconciliation';
+import RefsDOM from './Refs-DOM';
+import WebComponents from './Web-Components';
 
-
-class ContentLists extends Component {
-    render() {
-        return(
-            <div className="nav-item">
-                reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state ==>
-                <a href="http://cn.redux.js.org/docs/basics/Reducers.html">[reducers 概念链接]</a>
-            </div>
-        )
-    }
-}
+const Names = [ RefsDOM, CompUnControl, OptimizeUpdate,
+                Reconciliation, Context, WebComponents,
+                HigherComponents, OtherLibraries, Accessibility ];
 
 class MutipleContent extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return(
             <div>
-                <h2>内容</h2>
-                <ContentLists />
+                {Names.map((Name, index) =>
+                    index + 1 === this.props.contentKey ? <Name key={index + 1}/> : null
+                )}
             </div>
         )
     }
 }
 
 export default MutipleContent;
+
+

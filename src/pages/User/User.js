@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './User.css'
+import './User.less'
 import UserSelect from './../../pagesSub/User/UserSlect';
 import CommentApp from './../../pagesSub/User/Comment/CommentApp';
 
