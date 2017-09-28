@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './CommentsCenter.less';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 import PropTypes from 'prop-types';
@@ -57,7 +56,8 @@ class CommentsCenter extends Component {
 
     render() {
         return (
-            <div className="comments-center">
+            <div className="comments-center-one">
+                <h5>无 Redux 状态管理</h5>
                 <CommentInput onSubmit={this.handleSubmitComment}/>
                 <CommentList
                     comments={this.state.comments}

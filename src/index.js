@@ -10,7 +10,7 @@ import About from './pages/About/About';
 import Contacts from './pages/Contacts/Contacts';
 import Cast from './pages/Cast/Cast';
 import Concept from './pages/Concept/Concept';
-import Comments from './pages/Comments/CommentsCenter';
+import Comments from './pages/Comments/MainComments';
 
 ReactDOM.render(
     <Router history={hashHistory}>

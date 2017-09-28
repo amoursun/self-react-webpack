@@ -11,6 +11,8 @@
     "file-system": "^2.2.2",
     "html-webpack-plugin": "^2.28.0",
     "open-browser-webpack-plugin": "0.0.4",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "uglifyjs-webpack-plugin": "^0.4.6"
   },
   "scripts": {
@@ -43,9 +45,11 @@
     "react-dom": "15.6.1",
     "react-native-fs": "^2.5.1",
     "react-prism": "^4.0.0",
+    "react-redux": "^5.0.6",
     "react-router": "3.0.5",
     "react-scripts": "1.0.13",
     "react-svg-loader": "^1.1.1",
+    "redux": "^3.7.2",
     "sass": "^1.0.0-beta.2",
     "sass-loader": "^6.0.6",
     "spectre.css": "0.4.1",
