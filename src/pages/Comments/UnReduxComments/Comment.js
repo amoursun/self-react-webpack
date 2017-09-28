@@ -26,8 +26,8 @@ class Comment extends Component {
     }
 
     _updateTimeString() {
-        const comment = this.props.comment;
-        const duration = (+Date.now() - comment.createdTime) / 1000;
+        const commentData = this.props.commentData;
+        const duration = (+Date.now() - commentData.createdTime) / 1000;
         this.setState({
             timeString: Util.ChangeTime(duration)
         })
@@ -50,17 +50,17 @@ class Comment extends Component {
     }
 
     render() {
-        const comment = this.props.comment;
+        const commentData = this.props.commentData;
         return (
             <div className='comment'>
                 <div className='comment-user'>
                     <span className='comment-username'>
-                        {comment.username}
+                        {commentData.username}
                     </span> ：
-                    <span>{moment(comment.date).format('DD-MMM-YY HH:mm:ss')}</span>
+                    <span>{moment(commentData.date).format('DD-MMM-YY HH:mm:ss')}</span>
                 </div>
                 <p dangerouslySetInnerHTML={{
-                    __html: this._getProcessedContent(comment.content)
+                    __html: this._getProcessedContent(commentData.content)
                 }}/>
                 <span className='comment-createdtime'>
                     {this.state.timeString}
@@ -76,7 +76,7 @@ class Comment extends Component {
 }
 
 Comment.propTypes = {
-    comment: PropTypes.object.isRequired,
+    commentData: PropTypes.object,
     onDeleteComment: PropTypes.func,
     index: PropTypes.number
 }

@@ -9,7 +9,7 @@ class CommentsCenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: []
+            commentDatas: []
         };
         this.handleSubmitComment = this.handleSubmitComment.bind(this);
         this.handleDeleteComment = this.handleDeleteComment.bind(this);
@@ -20,38 +20,38 @@ class CommentsCenter extends Component {
     }
 
     _loadComments () {
-        let comments = localStorage.getItem('comments');
-        if (comments) {
-            comments = JSON.parse(comments);
+        let commentDatas = localStorage.getItem('commentDatas');
+        if (commentDatas) {
+            commentDatas = JSON.parse(commentDatas);
             this.setState({
-                comments: comments
+                commentDatas: commentDatas
             })
         }
     }
 
-    _saveComments (comments) {
-        localStorage.setItem('comments', JSON.stringify(comments));
+    _saveComments (commentDatas) {
+        localStorage.setItem('commentDatas', JSON.stringify(commentDatas));
     }
 
-    handleSubmitComment(comment) {
-        if (!comment) return;
-        if (!comment.username) return alert('请输入用户名');
-        if (!comment.content) return alert('请输入评论内容');
-        const comments = this.state.comments;
-        comments.push(comment);
+    handleSubmitComment(commentData) {
+        if (!commentData) return;
+        if (!commentData.username) return alert('请输入用户名');
+        if (!commentData.content) return alert('请输入评论内容');
+        const commentDatas = this.state.commentDatas;
+        commentDatas.push(commentData);
         this.setState({
-            comments: comments
+            commentDatas: commentDatas
         });
-        this._saveComments(comments);
+        this._saveComments(commentDatas);
     }
 
     handleDeleteComment (index) {
-        const comments = this.state.comments;
-        comments.splice(index, 1);
+        const commentDatas = this.state.commentDatas;
+        commentDatas.splice(index, 1);
         this.setState({
-            comments: comments
+            commentDatas: commentDatas
         });
-        this._saveComments(comments);
+        this._saveComments(commentDatas);
     }
 
     render() {
@@ -60,7 +60,7 @@ class CommentsCenter extends Component {
                 <h5>无 Redux 状态管理</h5>
                 <CommentInput onSubmit={this.handleSubmitComment}/>
                 <CommentList
-                    comments={this.state.comments}
+                    commentDatas={this.state.commentDatas}
                     onDeleteComment={this.handleDeleteComment}/>
             </div>
         )
@@ -71,6 +71,6 @@ CommentsCenter.propTypes = {
     saveData: PropTypes.func.isRequired
 };
 
-CommentsCenter = wrapWithLoadData(CommentsCenter, 'comments');
+CommentsCenter = wrapWithLoadData(CommentsCenter, 'commentDatas');
 
 export default CommentsCenter;

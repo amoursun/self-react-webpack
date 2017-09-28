@@ -7,7 +7,7 @@ class CommentList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: []
+            commentDatas: []
         };
         this.handleDeleteComment = this.handleDeleteComment.bind(this);
     }
@@ -21,9 +21,9 @@ class CommentList extends Component {
     render() {
         return (
             <div className="comment-list">
-                {this.props.comments.map((comment, i) =>
+                {this.props.commentDatas.map((commentData, i) =>
                     <Comment
-                        comment={comment}
+                        commentData={commentData}
                         key={i}
                         index={i}
                         onDeleteComment={this.handleDeleteComment} />
@@ -34,7 +34,7 @@ class CommentList extends Component {
 }
 
 CommentList.propTypes = {
-    comments: PropTypes.array,
+    commentDatas: PropTypes.array,
     onDeleteComment: PropTypes.func
 };
 
