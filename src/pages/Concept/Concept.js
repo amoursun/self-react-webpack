@@ -13,6 +13,7 @@ class Concept extends Component {
     }
 
     select(index) {
+        this.props.params.id = index;
         this.setState({
             key: index
         })

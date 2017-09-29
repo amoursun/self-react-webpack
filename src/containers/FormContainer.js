@@ -30,7 +30,7 @@ class FormContainer extends Component {
     }
     componentDidMount() {
         axios.get(`https://raw.githubusercontent.com/ganyanlins/api/master/react/self-react-webpack`)
-            .then(res => {
+            .then((res) => {
                 this.setState({
                     ownerName: res.data.ownerName,
                     petSelections: res.data.petSelections,
