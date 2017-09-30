@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {IndexLink, Link} from 'react-router';
 
 
 function ListItem(props) {
@@ -27,13 +26,11 @@ class GuidanceLists extends Component {
         return (
             <ul className="side-ul">
                 {names.map((name) =>
-                    <Link to={name.id} activeStyle={{color: '#00ff3d'}}>
-                        <ListItem key={name.id}
-                                  id={name.id}
-                                  value={name.name}
-                                  isSelect={name.select}
-                                  changeItem={this.handleListItemChange}/>
-                    </Link>
+                    <ListItem key={name.id}
+                              id={name.id}
+                              value={name.name}
+                              isSelect={name.select}
+                              changeItem={this.handleListItemChange}/>
                 )}
             </ul>
         )
