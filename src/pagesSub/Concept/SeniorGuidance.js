@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {IndexLink, Link} from 'react-router';
 
 
 function ListItem(props) {
@@ -26,11 +27,13 @@ class GuidanceLists extends Component {
         return (
             <ul className="side-ul">
                 {names.map((name) =>
-                    <ListItem key={name.id}
-                              id={name.id}
-                              value={name.name}
-                              isSelect={name.select}
-                              changeItem={this.handleListItemChange}/>
+                    <Link to={name.id} activeStyle={{color: '#00ff3d'}}>
+                        <ListItem key={name.id}
+                                  id={name.id}
+                                  value={name.name}
+                                  isSelect={name.select}
+                                  changeItem={this.handleListItemChange}/>
+                    </Link>
                 )}
             </ul>
         )
@@ -92,7 +95,7 @@ class SeniorGuidance extends Component {
 
     render() {
         return(
-            <div className="side-nav">
+            <div>
                 <a onClick={this.initChange}><h3>高级指引</h3></a>
                 <GuidanceLists
                     names={this.state.names}
@@ -104,5 +107,4 @@ class SeniorGuidance extends Component {
 }
 
 export default SeniorGuidance;
-
 

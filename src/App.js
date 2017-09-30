@@ -11,13 +11,41 @@ class App extends Component {
                 <img src={logo} className="App-logo" alt="logo"/>
                 <h3>React Router Tutorial</h3>
                 <ul className="nav">
-                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                    <li><Link to="/about" activeStyle={{color: 'green'}}>About</Link></li>
-                    <li><Link to="/user/Xiaoming" activeStyle={{color: 'red'}}>User</Link></li>
-                    <li><Link to="/contacts" activeClassName="active">Contacts</Link></li>
-                    <li><Link to="/cast" activeStyle={{color: 'yellow'}}>Cast</Link></li>
-                    <li><Link to="/concept" activeStyle={{color: 'purple'}}>Concept</Link></li>
-                    <li><Link to="/comments" activeStyle={{color: 'coral'}}>Comments</Link></li>
+                    <li>
+                        <IndexLink to="/" activeClassName="active">
+                            Home
+                        </IndexLink>
+                    </li>
+                    <li>
+                        <Link to="/about" activeStyle={{color: 'green'}}>
+                            About
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user/Xiaoming" activeStyle={{color: 'red'}}>
+                            User
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/contacts" activeClassName="active">
+                            Contacts
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/cast" activeStyle={{color: 'yellow'}}>
+                            Cast
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/concept" activeStyle={{color: 'purple'}}>
+                            Concept
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/comments" activeStyle={{color: 'coral'}}>
+                            Comments
+                        </Link>
+                    </li>
                 </ul>
             </div>
             {this.props.children}

@@ -9,7 +9,7 @@ class GuidanceContent extends Component {
 
     render() {
         return(
-            <div className="nav-content">
+            <div>
                 { !this.props.content ? <ContentBegin /> : <MutipleContent contentKey={this.props.content}/>}
             </div>
         )
