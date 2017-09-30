@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './Concept.less';
 import SeniorGuidance from './../../pagesSub/Concept/SeniorGuidance';
-import GuidanceContent from './../../pagesSub/Concept/GuidanceContent'
+import GuidanceContent from './../../pagesSub/Concept/GuidanceContent';
+import PropTypes from 'prop-types';
 
 class Concept extends Component {
     constructor(props) {
@@ -34,6 +35,11 @@ class Concept extends Component {
            </div>
        )
     }
+};
+
+Concept.propTypes = {
+    select: PropTypes.func,
+    content: PropTypes.number || PropTypes.string
 };
 
 export default Concept;
