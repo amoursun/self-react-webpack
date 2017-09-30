@@ -10,7 +10,6 @@ import About from './pages/About/About';
 import Contacts from './pages/Contacts/Contacts';
 import Cast from './pages/Cast/Cast';
 import  Concept from './pages/Concept/Concept';
-// import  Message from './pagesSub/Concept/SeniorGuidance';
 import Comments from './pages/Comments/MainComments';
 
 //通过hashHistory 路由 history={hashHistory}
