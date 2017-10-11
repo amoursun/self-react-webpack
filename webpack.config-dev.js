@@ -53,7 +53,8 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         query: {
-                            presets: ['es2015']
+                            // presets: ['es2015']
+                            presets: ['env']
                         }
                     },
                     {
@@ -70,7 +71,8 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     cacheDirectory: true,
-                    presets: ["es2015", "react", "stage-3"]
+                    // presets: ["es2015", "react", "stage-3"]
+                    presets: ["env", "react", "stage-3"]
                 }
             },
             {

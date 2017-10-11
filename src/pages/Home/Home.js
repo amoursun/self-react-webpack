@@ -89,7 +89,7 @@ function Greet(props) {
     else {
         return (
             <div>
-                <h1> Hello, {formatName(user)}! + another</h1>
+                <h1> Hello, {formatName(user)}! another</h1>
                 <Welcome name="this is another first props"/>
                 <Welcome name="this is another second props"/>
                 <Welcome name="this is another third props"/>

@@ -46,6 +46,11 @@ class App extends Component {
                             Comments
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/table" activeStyle={{color: '#fd5624'}}>
+                            TablePage
+                        </Link>
+                    </li>
                 </ul>
             </div>
             {this.props.children}
