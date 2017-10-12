@@ -10,4 +10,4 @@ export const dataGenerate = () => {
     }
 };
 
-export const dataList = new Array(10).fill(0).map(() => dataGenerate());
+export const dataList = new Array(100).fill(0).map(() => dataGenerate());
