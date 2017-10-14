@@ -51,6 +51,11 @@ class App extends Component {
                             TablePage
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/newShopTable" activeStyle={{color: '#1d5624'}}>
+                            NewShopTable
+                        </Link>
+                    </li>
                 </ul>
             </div>
             {this.props.children}

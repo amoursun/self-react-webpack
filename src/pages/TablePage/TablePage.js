@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { fromJS, Map } from 'immutable';//新加的
 import './TablePage.less';
 import Perf from 'react-addons-perf';
-import { dataList, dataGenerate } from './data';
+import { Data, dataGenerateBegin } from './data';
 import CTable from '../../components/table/Table';
 
 
@@ -11,8 +11,8 @@ export default class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // data: dataList
-            data: fromJS(dataList)
+            // data: Data.dataList
+            data: fromJS(Data.dataList)
         };
         this.onChange = this.onChange.bind(this);
         this.add = this.add.bind(this);
@@ -22,8 +22,8 @@ export default class Table extends Component {
     // add = () => {
     add() {
         const  { data } = this.state;
-        // data.push(dataGenerate());
-        data.push(Map(dataGenerate()));
+        // data.push(dataGenerateBegin());
+        data.push(Map(dataGenerateBegin()));
         this.setState({
             data
         })
