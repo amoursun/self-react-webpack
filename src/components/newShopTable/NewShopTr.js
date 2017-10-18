@@ -18,13 +18,13 @@ import React, {PureComponent} from 'react';
 
 class Option extends PureComponent {
     render() {
-        const { name, onDelete, onCopy, onEdit }= this.props;
+        const { id, onDelete, onCopy, onEdit }= this.props;
         return (
             <div className="cell" >
                 <div className="cell__child-container">
-                    <span onClick={() => onEdit(name)}>修改</span>&nbsp;| &nbsp;
-                    <span onClick={() => onCopy(name)}>复制</span>&nbsp;| &nbsp;
-                    <span onClick={() => onDelete(name)}>删除</span>
+                    <span onClick={() => onEdit(id)}>修改</span>&nbsp;| &nbsp;
+                    <span onClick={() => onCopy(id)}>复制</span>&nbsp;| &nbsp;
+                    <span onClick={() => onDelete(id)}>删除</span>
                 </div>
             </div>
         )
@@ -59,28 +59,39 @@ export default class NewShopTr extends PureComponent {
         onChange && onChange(name, value);
     };
  
-    handleClick() {
+    handleClick(e) {
         this.setState({ edit: true });
     };
 
     onDelete(e) {
-        const { data, onChange } = this.props;
-        onChange && onChange({
-            name: data.name,
-            weight: e.target.value
+        const { data, onDelete } = this.props;
+        onDelete && onDelete({
+            id: data.id
         })
 
     }
 
-    onCopy() {
-        console.log('onCopy');
+    onCopy(e) {
+        const { data, onCopy } = this.props;
+        onCopy && onCopy({
+            id: data.id,
+            name: data.name,
+            age: data.age,
+            height: data.height,
+            weight: data.weight
+            // weight: e.target.value
+        })
     }
 
-    onEdit() {
-        console.log('onEdit');
+    onEdit(e) {
+        const { data, onEdit } = this.props;
+        onEdit && onEdit({
+            name: data.name,
+            weight: e.target.value
+        })
     }
 
-    checkSingle() {
+    checkSingle(e) {
         console.log('checkSingle');
     }
 
@@ -111,7 +122,7 @@ export default class NewShopTr extends PureComponent {
                         <input onBlur={this.handleBlur} defaultValue={data.weight}/> : data.weight}
                     </div>
                 </div>
-                <Option onDelete={this.onDelete} onCopy={this.onCopy} onEdit={this.onEdit} name={data.name}  />
+                <Option onDelete={this.onDelete} onCopy={this.onCopy} onEdit={this.onEdit} id={data.id}  />
             </div>
         );
     }

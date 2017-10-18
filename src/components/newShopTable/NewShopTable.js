@@ -52,7 +52,14 @@ export default class NewShopTable extends Component {
                     </div>
                 </div>
                 <div className="tbody">
-                    {tableData.map(i => <NewShopTr onChange={this.props.onChange} key={i.name} id={i.name} data={i} />)}
+                    {tableData.map(i => <NewShopTr
+                                            onChange={this.props.onChange}
+                                            onEdit={this.props.onEdit}
+                                            onCopy={this.props.onCopy}
+                                            onDelete={this.props.onDelete}
+                                            key={i.id}
+                                            id={i.id}
+                                            data={i} />)}
                 </div>
             </div>
         );
