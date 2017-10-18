@@ -12,10 +12,11 @@ export const dataGenerateBegin = () => {
 
 export const dataGenerate = () => {
     return {
+        id: randomId(),
         name: randomId(),
         age: randomNum(100),
         height: randomNum(1000),
-        width: randomNum(100),
+        weight: randomNum(100),
         hobby: {
             movie: {
                 name: randomId(),
@@ -23,12 +24,12 @@ export const dataGenerate = () => {
             }
         }
     }
-}
+};
 
 export const Data = {
     dataSets: new Array(5).fill(0).map(() => dataGenerate()),
-    dataList: new Array(100).fill(0).map(() => dataGenerateBegin())
+    dataList: new Array(5).fill(0).map(() => dataGenerateBegin())
 };
 // export const dataSets = new Array(5).fill(0).map(() => dataGenerate());
 //
-// export const dataList = new Array(100).fill(0).map(() => dataGenerateBegin());
+// export const dataList = new Array(5).fill(0).map(() => dataGenerateBegin());

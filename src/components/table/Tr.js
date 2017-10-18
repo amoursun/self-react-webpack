@@ -1,8 +1,6 @@
-// import React, {Component} from 'react';
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
-// export default class Tr extends Component {
-export default class Tr extends PureComponent {
+export default class Tr extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,10 +20,8 @@ export default class Tr extends PureComponent {
     handleBlur(e) {
         const value = e.target.value;
         this.setState({edit: false});
-        // const {onChange, data: {item_id}} = this.props;
-        // onChange && onChange(item_id, value);
-        const { onChange, data } = this.props;
-        onChange && onChange(data.get('item_id'), value);
+        const {onChange, data: {item_id: item_id}} = this.props;
+        onChange && onChange(item_id, value);
     };
  
     // handleClick = () => {
@@ -41,24 +37,18 @@ export default class Tr extends PureComponent {
             <div className="tr">
                 <div className="cell">
                     <div className="cell__child-container">
-                        {/*<div>{data.item_id}</div>*/}
-                        <div>{data.get('item_id')}</div>
+                        <div>{data.item_id}</div>
                     </div>
                 </div>
                 <div className="cell">
-                    {/*<div className="cell__child-container">{data.bro_xh}</div>*/}
-                    <div className="cell__child-container">{data.get('bro_xh')}</div>
+                    <div className="cell__child-container">{data.bro_xh}</div>
                 </div>
                 <div className="cell cell--money cell--center">
-                    {/*<div className="cell__child-container">{data.stock_num}</div>*/}
-                    <div className="cell__child-container">{data.get('stock_num')}</div>
+                    <div className="cell__child-container">{data.stock_num}</div>
                 </div>
                 <div className="cell">
-                    {/*<div className="cell__child-container">{edit ?*/}
-                        {/*<input onBlur={this.handleBlur} defaultValue={data.sold_num}/> : data.sold_num}</div>*/}
                     <div className="cell__child-container">{edit ?
-                        <input onBlur={this.handleBlur} defaultValue={data.get('sold_num')}/> : data.get('sold_num')}
-                    </div>
+                        <input onBlur={this.handleBlur} defaultValue={data.sold_num}/> : data.sold_num}</div>
                 </div>
                 <div className="cell">
                     <div className="cell__child-container">

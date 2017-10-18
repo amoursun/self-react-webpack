@@ -12,11 +12,7 @@ import Cast from './pages/Cast/Cast';
 import  Concept from './pages/Concept/Concept';
 import Comments from './pages/Comments/MainComments';
 import TablePage from './pages/TablePage/TablePage';
-// import NewShopTable from './pages/NewShopTable/NewShopTable';
-import NewShopTable from './pages/NewShopTable/page/index/index';
-import Add from './pages/NewShopTable/page/create/add';
-import Edit from './pages/NewShopTable/page/create/edit';
-import Copy from './pages/NewShopTable/page/create/copy';
+import NewShopTable from './pages/NewShopTable/NewShopTable';
 
 
 const routeConfig = [
@@ -31,14 +27,7 @@ const routeConfig = [
             { path: 'concept', component: Concept },
             { path: 'comments', component: Comments },
             { path: 'table', component: TablePage },
-            { path: 'newShopTable',
-                component: NewShopTable,
-                childRoutes: [
-                    { path: 'add', component: Add },
-                    { path: 'update/:name', component: Edit },
-                    { path: 'copy/:name', component: Copy }
-                ]
-            }
+            { path: 'newShopTable', component: NewShopTable }
         ]
     }
 ];

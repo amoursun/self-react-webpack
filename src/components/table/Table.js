@@ -1,9 +1,7 @@
-// import React, { Component } from 'react';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Tr from './Tr';
 
-// export default class Table extends Component {
-export default class Table extends PureComponent {
+export default class Table extends Component {
     render() {
         const tableData = this.props.data;
         return (
@@ -39,8 +37,7 @@ export default class Table extends PureComponent {
                     </div>
                 </div>
                 <div className="tbody">
-                    {/*{tableData.map(i => <Tr onChange={this.props.onChange} key={i.item_id} data={i} />)}*/}
-                    {tableData.map(i => <Tr onChange={this.props.onChange} key={i.get('item_id')} data={i} />)}
+                    {tableData.map(i => <Tr onChange={this.props.onChange} key={i.item_id} data={i} />)}
                 </div>
             </div>
         );
