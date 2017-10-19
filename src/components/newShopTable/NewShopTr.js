@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
+import Checkbox from './Checkbox';
 
-
-// class Option extends PureComponent {
+// class Option extends Component {
 //     render() {
 //         const { name, onDelete }= this.props;
 //         return (
@@ -16,13 +16,14 @@ import React, {PureComponent} from 'react';
 //     }
 // }
 
-class Option extends PureComponent {
+class Option extends Component {
     render() {
-        const { id, onDelete, onCopy, onEdit }= this.props;
+        const { id, edit, onDelete, onCopy, onEdit, onEditing }= this.props;
         return (
             <div className="cell" >
                 <div className="cell__child-container">
-                    <span onClick={() => onEdit(id)}>修改</span>&nbsp;| &nbsp;
+                    {edit ? <span onClick={() => onEditing(id)}>修改中</span> :
+                            <span onClick={() => onEdit(id)}>修改</span>}&nbsp;| &nbsp;
                     <span onClick={() => onCopy(id)}>复制</span>&nbsp;| &nbsp;
                     <span onClick={() => onDelete(id)}>删除</span>
                 </div>
@@ -31,18 +32,23 @@ class Option extends PureComponent {
     }
 }
 
+var editData = {};
+var obj = {};
 
-export default class NewShopTr extends PureComponent {
+export default class NewShopTr extends Component {
     constructor(props) {
         super(props);
         this.state = {
             edit: false
         };
-        this.handleBlur = this.handleBlur.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleBlurName = this.handleBlurName.bind(this);
+        this.handleBlurAge = this.handleBlurAge.bind(this);
+        this.handleBlurHeight = this.handleBlurHeight.bind(this);
+        this.handleBlurWeight = this.handleBlurWeight.bind(this);
         this.onDelete = this.onDelete.bind(this);
         this.onCopy = this.onCopy.bind(this);
         this.onEdit = this.onEdit.bind(this);
+        this.onEditing = this.onEditing.bind(this);
         this.checkSingle = this.checkSingle.bind(this);
     };
 
@@ -52,15 +58,24 @@ export default class NewShopTr extends PureComponent {
     //     return this.props.data.sold_num === nextProps.data.sold_num;
     // }
 
-    handleBlur(e) {
-        const value = e.target.value;
-        this.setState({edit: false});
-        const { onChange, data: { name: name } } = this.props;
-        onChange && onChange(name, value);
+    componentWillMount() {
+        this.selectedCheckboxes = new Set();
     };
- 
-    handleClick(e) {
-        this.setState({ edit: true });
+
+    handleBlurName(e) {
+        editData.name = e.target.value;
+    };
+
+    handleBlurAge(e) {
+        editData.age = e.target.value;
+    };
+
+    handleBlurHeight(e) {
+        editData.height = e.target.value;
+    };
+
+    handleBlurWeight(e) {
+        editData.weight = e.target.value;
     };
 
     onDelete(e) {
@@ -73,56 +88,72 @@ export default class NewShopTr extends PureComponent {
 
     onCopy(e) {
         const { data, onCopy } = this.props;
-        onCopy && onCopy({
-            id: data.id,
-            name: data.name,
-            age: data.age,
-            height: data.height,
-            weight: data.weight
-            // weight: e.target.value
-        })
+        let copyData = Object.create(data);
+        onCopy && onCopy(copyData);
     }
 
     onEdit(e) {
-        const { data, onEdit } = this.props;
-        onEdit && onEdit({
-            name: data.name,
-            weight: e.target.value
-        })
+        const {data} = this.props;
+        editData = data;
+        this.setState({edit: true});
     }
 
-    checkSingle(e) {
-        console.log('checkSingle');
+    onEditing(e) {
+        this.setState({edit: false});
+        const { onEdit } = this.props;
+        onEdit && onEdit(editData);
+    }
+
+    checkSingle(label) {
+
+        if (this.selectedCheckboxes.has(label)) {
+            this.selectedCheckboxes.delete(label);
+            delete obj[label];
+        } else {
+            this.selectedCheckboxes.add(label);
+            obj[label] = label;
+        }
+
+        const { onCheckSingle } = this.props;
+        onCheckSingle && onCheckSingle(obj);
     }
 
     render() {
         const data = this.props.data;
-        const { edit, value } = this.state;
+        const { edit } = this.state;
 
         return (
             <div className="tr">
                 <div className="cell">
+                    {/*<div className="cell__child-container">*/}
+                        {/*<input type="checkbox" onClick={this.checkSingle}/>*/}
+                    {/*</div>*/}
+                    <Checkbox label={data.id}
+                              isCheckedAll={this.props.isCheckedAll}
+                              handleCheckboxChange={this.checkSingle}
+                              key={data.id} />
+                </div>
+                <div className="cell">
                     <div className="cell__child-container">
-                        <input type="checkbox" onClick={this.checkSingle}/>
+                        {edit ? <input onBlur={this.handleBlurName} defaultValue={data.name}/> : data.name}
                     </div>
                 </div>
                 <div className="cell">
                     <div className="cell__child-container">
-                        <div>{data.name}</div>
+                        {edit ? <input onBlur={this.handleBlurAge} defaultValue={data.age}/> : data.age}
                     </div>
-                </div>
-                <div className="cell">
-                    <div className="cell__child-container">{data.age}</div>
                 </div>
                 <div className="cell cell--money cell--center">
-                    <div className="cell__child-container">{data.height}</div>
-                </div>
-                <div className="cell">
-                    <div className="cell__child-container">{edit ?
-                        <input onBlur={this.handleBlur} defaultValue={data.weight}/> : data.weight}
+                    <div className="cell__child-container">
+                        {edit ? <input onBlur={this.handleBlurHeight} defaultValue={data.height}/> : data.height}
                     </div>
                 </div>
-                <Option onDelete={this.onDelete} onCopy={this.onCopy} onEdit={this.onEdit} id={data.id}  />
+                <div className="cell">
+                    <div className="cell__child-container">
+                        {edit ? <input onBlur={this.handleBlurWeight} defaultValue={data.weight}/> : data.weight}
+                    </div>
+                </div>
+                <Option onDelete={this.onDelete} onCopy={this.onCopy} onEdit={this.onEdit} onEditing={this.onEditing} id={data.id} edit={edit} />
             </div>
         );
     }

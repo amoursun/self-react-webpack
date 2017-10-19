@@ -1,15 +1,47 @@
 import React, { Component } from 'react';
 import NewShopTr from './NewShopTr';
+import CheckboxAll from './CheckboxAll';
+
+var obj = null;
+var selectedAllCheckboxes = [];
 
 export default class NewShopTable extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isCheckedAll: false
+        };
         this.checkAll = this.checkAll.bind(this);
-
+        this.deletes = this.deletes.bind(this);
+        this.onCheckSingle = this.onCheckSingle.bind(this);
     }
 
-    checkAll() {
+    componentWillMount() {
+        this.props.data.map(value => {
+            selectedAllCheckboxes.push(value.id);
+        });
+    }
 
+    componentWillReceiveProps() {
+        selectedAllCheckboxes = [];
+        this.props.data.map(value => {
+            selectedAllCheckboxes.push(value.id);
+        });
+    }
+
+    onCheckSingle(info) {
+        obj = info;
+    }
+
+    deletes() {
+        this.props.deletes(obj);
+    }
+
+    checkAll(arr, checked) {
+        let arrObj = null;
+
+
+        this.setState({ isCheckedAll: checked })
     }
 
     render() {
@@ -19,9 +51,12 @@ export default class NewShopTable extends Component {
                 <div className="thead">
                     <div className="stickrow tr">
                         <div className="cell">
-                            <div className="cell__child-container">
-                                <input type="checkbox" onClick={this.checkAll}/>
-                            </div>
+                            {/*<div className="cell__child-container">*/}
+                                {/*<input type="checkbox" onClick={this.checkAll}/>*/}
+                            {/*</div>*/}
+                            <CheckboxAll
+                                labelAll={selectedAllCheckboxes}
+                                handleCheckboxAllChange={this.checkAll} />
                         </div>
                         <div className="cell">
                             <div className="cell__child-container">姓名</div>
@@ -53,13 +88,18 @@ export default class NewShopTable extends Component {
                 </div>
                 <div className="tbody">
                     {tableData.map(i => <NewShopTr
-                                            onChange={this.props.onChange}
                                             onEdit={this.props.onEdit}
                                             onCopy={this.props.onCopy}
                                             onDelete={this.props.onDelete}
+                                            onCheckSingle={this.onCheckSingle}
                                             key={i.id}
                                             id={i.id}
+                                            isCheckedAll={this.state.isCheckedAll}
                                             data={i} />)}
+                </div>
+                <div className="button">
+                    <button onClick={this.props.add}>add</button>
+                    <button onClick={this.deletes}>deletes</button>
                 </div>
             </div>
         );
