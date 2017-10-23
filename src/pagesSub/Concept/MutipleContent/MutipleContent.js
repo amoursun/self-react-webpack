@@ -8,7 +8,7 @@ import OtherLibraries from './Other-Libraries';
 import Reconciliation from './Reconciliation';
 import RefsDOM from './Refs-DOM';
 import WebComponents from './Web-Components';
-import SeniorComments from './SeniorComments';
+import SeniorComments from './Senior-Comments';
 
 const Names = [ RefsDOM, CompUnControl, OptimizeUpdate,
                 Reconciliation, Context, WebComponents,
