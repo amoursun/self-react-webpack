@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import NewShopTr from './NewShopTr';
 import CheckboxAll from './CheckboxAll';
+import PropTypes from 'prop-types';
 
-var obj = null;
+var obj = {};
 var selectedAllCheckboxes = [];
 
 export default class NewShopTable extends Component {
@@ -29,7 +30,7 @@ export default class NewShopTable extends Component {
         });
     }
 
-    onCheckSingle(info) {
+    onCheckSingle(info, checked) {
         obj = info;
     }
 
@@ -38,8 +39,12 @@ export default class NewShopTable extends Component {
     }
 
     checkAll(arr, checked) {
-        let arrObj = null;
+        let arrObj = {};
 
+        arr.map(value => {
+            arrObj[value] = value;
+        });
+        obj = arrObj;
 
         this.setState({ isCheckedAll: checked })
     }
@@ -94,6 +99,7 @@ export default class NewShopTable extends Component {
                                             onCheckSingle={this.onCheckSingle}
                                             key={i.id}
                                             id={i.id}
+                                            obj={obj}
                                             isCheckedAll={this.state.isCheckedAll}
                                             data={i} />)}
                 </div>
@@ -105,3 +111,8 @@ export default class NewShopTable extends Component {
         );
     }
 }
+
+NewShopTable.propTypes = {
+    isCheckedAll: PropTypes.bool
+};
+

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ContentBegin from './ContentBegin/ContentBegin';
 import MutipleContent from './MutipleContent/MutipleContent';
 

@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import './NewShopTable.less';
-import { Data, dataGenerate } from './../TablePage/data';
+import { Data, dataGenerate } from './data';
 import NewShopTable from '../../components/newShopTable/NewShopTable';
+import PropTypes from 'prop-types';
 
-function arrFunc() {
-    return [];
-}
 
 function objFunc(data, obj) {
     let arr = [];
@@ -42,11 +40,9 @@ export default class NewShopTables extends Component {
     };
 
     deletes(obj) {
-        let arr = [];
         const  { data } = this.state;
-        obj instanceof Array ? arrFunc() : objFunc(data, obj);
         this.setState({
-            data: arr
+            data: objFunc(data, obj)
         })
     };
 
@@ -112,6 +108,9 @@ export default class NewShopTables extends Component {
     }
 }
 
+NewShopTables.propTypes = {
+    data: PropTypes.array
+};
 
 
 

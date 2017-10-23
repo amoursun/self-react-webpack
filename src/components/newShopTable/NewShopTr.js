@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Checkbox from './Checkbox';
+import PropTypes from 'prop-types';
 
 // class Option extends Component {
 //     render() {
@@ -33,7 +34,6 @@ class Option extends Component {
 }
 
 var editData = {};
-var obj = {};
 
 export default class NewShopTr extends Component {
     constructor(props) {
@@ -96,6 +96,8 @@ export default class NewShopTr extends Component {
         const {data} = this.props;
         editData = data;
         this.setState({edit: true});
+
+
     }
 
     onEditing(e) {
@@ -105,17 +107,17 @@ export default class NewShopTr extends Component {
     }
 
     checkSingle(label) {
+        const { obj } = this.props;
 
-        if (this.selectedCheckboxes.has(label)) {
-            this.selectedCheckboxes.delete(label);
+        if (obj[label]) {
+            var isCheckedAll = false;
             delete obj[label];
         } else {
-            this.selectedCheckboxes.add(label);
             obj[label] = label;
         }
 
         const { onCheckSingle } = this.props;
-        onCheckSingle && onCheckSingle(obj);
+        onCheckSingle && onCheckSingle(obj, isCheckedAll);
     }
 
     render() {
@@ -158,3 +160,8 @@ export default class NewShopTr extends Component {
         );
     }
 }
+
+NewShopTr.propTypes = {
+    edit: PropTypes.bool
+};
+

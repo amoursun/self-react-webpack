@@ -46,7 +46,8 @@ const names = [
     {id: 6, name: 'Web Components', title: 'six'},
     {id: 7, name: '高阶组件(Higher Components)', title: 'seven'},
     {id: 8, name: '与第三方库协同(Other Libraries)', title: 'eight'},
-    {id: 9, name: '可访问性(Accessibility)', title: 'nine'}
+    {id: 9, name: '可访问性(Accessibility)', title: 'nine'},
+    {id: 10, name: '案例-评论高级(demo)', title: 'ten'}
 ];
 
 class SeniorGuidance extends Component {
