@@ -27,8 +27,8 @@ function List(props) {
 }
 
 const reduxCodes = [
-    {id: 1, content: 'Redux 状态管理'},
-    {id: 2, content: '无 Redux 状态管理'}
+    {id: 1, content: '无 Redux 状态管理'},
+    {id: 2, content: 'Redux 状态管理'}
 ];
 
 class MainComments extends Component {
