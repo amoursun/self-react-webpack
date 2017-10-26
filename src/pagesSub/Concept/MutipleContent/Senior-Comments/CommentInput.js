@@ -7,7 +7,8 @@ class CommentInput extends Component {
         super(props);
         this.state = {
             userName: props.data || '',
-            comment: ''
+            comment: '',
+            date: ''
         };
         this.handleUsernameBlur = this.handleUsernameBlur.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -40,10 +41,14 @@ class CommentInput extends Component {
             this.props.onSubmit({
                 userName: this.state.userName,
                 content: this.state.content,
+                date: +new Date(),
                 createdTime: +new Date()
             })
         }
-        this.setState({ content: '' })
+        this.setState({
+            content: '',
+            date: ''
+        })
     }
 
     render () {
@@ -82,8 +87,7 @@ CommentInput = wrapWithLoadData(CommentInput, 'userName');
 
 CommentInput.propTypes = {
     onSubmit: PropTypes.func,
-    userName: PropTypes.string,
-    comment: PropTypes.string,
+    data: PropTypes.any,
     saveData: PropTypes.func
 };
 

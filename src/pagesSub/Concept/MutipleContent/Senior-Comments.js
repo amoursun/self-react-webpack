@@ -3,6 +3,7 @@ import CommentInput from './Senior-Comments/CommentInput';
 import CommentList from './Senior-Comments/CommentList';
 import wrapWithLoadData from './Senior-Comments/wrapWithLoadData';
 import PropTypes from 'prop-types';
+import './Senior-Comments.less';
 
 class SeniorComments extends Component {
     constructor(props) {
@@ -20,21 +21,21 @@ class SeniorComments extends Component {
         if (!comment.content) return alert('请输入评论内容');
         const comments = this.state.comments;
         comments.push(comment);
-        this.setState({ comments });
+        this.setState({ comments: comments });
         this.props.saveData(comments);
     }
 
     handleDeleteComment (index) {
         const comments = this.state.comments;
         comments.splice(index, 1);
-        this.setState({ comments });
+        this.setState({ comments: comments });
         this.props.saveData(comments);
     }
 
     render() {
         return (
             <div className="senior-comments">
-                <div>SeniorComments</div>
+                <h5>SeniorComments</h5>
                 <CommentInput onSubmit={this.handleSubmitComment} />
                 <CommentList
                     comments={this.state.comments}
@@ -45,6 +46,7 @@ class SeniorComments extends Component {
 }
 
 SeniorComments.propTypes = {
+    data: PropTypes.any,
     comments: PropTypes.array,
     saveData: PropTypes.func
 };
