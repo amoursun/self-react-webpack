@@ -41,9 +41,9 @@ class TemperatureInput extends Component {
         this.handleChange = this.handleChange.bind(this);
     };
 
-    handleChange(e) {
+    handleChange = (e) => {
         this.props.onTempChange(e.target.value)
-    }
+    };
 
     render() {
         const temperature = this.props.temperature;
@@ -63,16 +63,19 @@ class ChangeTemperature extends Component {
         super(props);
         this.handleCelsius = this.handleCelsius.bind(this);
         this.handleFahrenheit = this.handleFahrenheit.bind(this);
-        this.state = {scale: 'C', temperature: ''};
+        this.state = {
+            scale: 'C',
+            temperature: ''
+        };
     }
 
-    handleCelsius(temperature) {
+    handleCelsius = (temperature) => {
         this.setState({scale: 'C', temperature})
-    }
+    };
 
-    handleFahrenheit(temperature) {
+    handleFahrenheit = (temperature) => {
         this.setState({scale: 'F', temperature})
-    }
+    };
 
     render() {
         const scale = this.state.scale;

@@ -38,16 +38,17 @@ class GuidanceLists extends Component {
 }
 
 const names = [
-    {id: 1, name: 'Refs & DOM(Refs-DOM)', title: 'one'},
-    {id: 2, name: '非受控组件(Comp-UnControl)', title: 'two'},
-    {id: 3, name: '性能优化(Optimize Update)', title: 'three'},
-    {id: 4, name: 'Reconciliation', title: 'four'},
-    {id: 5, name: 'Context', title: 'five'},
-    {id: 6, name: 'Web Components', title: 'six'},
-    {id: 7, name: '高阶组件(Higher Components)', title: 'seven'},
-    {id: 8, name: '与第三方库协同(Other Libraries)', title: 'eight'},
-    {id: 9, name: '可访问性(Accessibility)', title: 'nine'},
-    {id: 10, name: '案例-评论高级(demo)', title: 'ten'}
+    {id: 1, name: 'PropTypes检查(PropTypes)', title: 'one'},
+    {id: 2, name: 'Refs & DOM(Refs-DOM)', title: 'two'},
+    {id: 3, name: '非受控组件(Comp-UnControl)', title: 'three'},
+    {id: 4, name: '性能优化(Optimize Update)', title: 'four'},
+    {id: 5, name: 'Reconciliation', title: 'five'},
+    {id: 6, name: 'Context', title: 'six'},
+    {id: 7, name: 'Web Components', title: 'seven'},
+    {id: 8, name: '高阶组件(Higher Components)', title: 'eight'},
+    {id: 9, name: '与第三方库协同(Other Libraries)', title: 'nine'},
+    {id: 10, name: '可访问性(Accessibility)', title: 'ten'},
+    {id: 11, name: '案例-评论高级(demo)', title: 'eleven'}
 ];
 
 class SeniorGuidance extends Component {

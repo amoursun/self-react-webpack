@@ -16,7 +16,7 @@ class OptimizeUpdate extends Component {
     render() {
         return(
             <div>
-                <h2>内容3</h2>
+                <h2>性能优化(Optimize Update)</h2>
                 <ContentLists />
             </div>
         )

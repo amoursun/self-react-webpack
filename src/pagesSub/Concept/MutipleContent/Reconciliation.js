@@ -16,7 +16,7 @@ class Reconciliation extends Component {
     render() {
         return(
             <div>
-                <h2>内容4</h2>
+                <h2>Reconciliation</h2>
                 <ContentLists />
             </div>
         )

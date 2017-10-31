@@ -16,7 +16,7 @@ class CompUnControl extends Component {
     render() {
         return(
             <div>
-                <h2>内容2</h2>
+                <h2>非受控组件(Comp-UnControl)</h2>
                 <ContentLists />
             </div>
         )

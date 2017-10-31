@@ -16,7 +16,7 @@ class RefsDOM extends Component {
     render() {
         return(
             <div>
-                <h2>内容1</h2>
+                <h2>Refs-DOM</h2>
                 <ContentLists />
             </div>
         )

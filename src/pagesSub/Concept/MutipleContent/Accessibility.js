@@ -16,7 +16,7 @@ class Accessibility extends Component {
     render() {
         return(
             <div>
-                <h2>内容9</h2>
+                <h2>可访问性(Accessibility)</h2>
                 <ContentLists />
             </div>
         )

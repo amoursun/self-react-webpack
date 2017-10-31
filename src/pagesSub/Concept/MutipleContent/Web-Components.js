@@ -16,7 +16,7 @@ class WebComponents extends Component {
     render() {
         return(
             <div>
-                <h2>内容6</h2>
+                <h2>Web Components</h2>
                 <ContentLists />
             </div>
         )
