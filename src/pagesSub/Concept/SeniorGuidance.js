@@ -68,6 +68,7 @@ class SeniorGuidance extends Component {
     // }
 
     handleSelect(key) {
+        // this.props.history.push('/' + names.title);
         this.props.selectChange(key);
         this.state.names.map((nameSelect, index) => {
             if (key - 1 === index) {
@@ -93,11 +94,12 @@ class SeniorGuidance extends Component {
     }
 
     render() {
+        const { names } = this.state;
         return(
             <div>
                 <a onClick={this.initChange}><h3>高级指引</h3></a>
                 <GuidanceLists
-                    names={this.state.names}
+                    names={names}
                     select={this.handleSelect}
                 />
             </div>
