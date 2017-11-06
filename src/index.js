@@ -20,11 +20,12 @@ const routeConfig = [
         component: App,
         indexRoute: { component: Home },
         childRoutes: [
-            { path: 'user/:name', component: User },
+            { path: 'user', component: User },
             { path: 'about', component: About },
             { path: 'contacts', component: Contacts },
             { path: 'cast', component: Cast },
             { path: 'concept', component: Concept },
+            { path: 'concept/:title', component: Concept },
             { path: 'comments', component: Comments },
             { path: 'table', component: TablePage },
             { path: 'newShopTable', component: NewShopTable }

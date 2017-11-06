@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { hashHistory} from 'react-router';
 
 
 function ListItem(props) {
@@ -38,17 +39,17 @@ class GuidanceLists extends Component {
 }
 
 const names = [
-    {id: 1, name: 'PropTypes检查(PropTypes)', title: 'one'},
-    {id: 2, name: 'Refs & DOM(Refs-DOM)', title: 'two'},
-    {id: 3, name: '非受控组件(Comp-UnControl)', title: 'three'},
-    {id: 4, name: '性能优化(Optimize Update)', title: 'four'},
-    {id: 5, name: 'Reconciliation', title: 'five'},
-    {id: 6, name: 'Context', title: 'six'},
-    {id: 7, name: 'Web Components', title: 'seven'},
-    {id: 8, name: '高阶组件(Higher Components)', title: 'eight'},
-    {id: 9, name: '与第三方库协同(Other Libraries)', title: 'nine'},
-    {id: 10, name: '可访问性(Accessibility)', title: 'ten'},
-    {id: 11, name: '案例-评论高级(demo)', title: 'eleven'}
+    {id: 1, name: 'PropTypes检查(PropTypes)', title: 'propType'},
+    {id: 2, name: 'Refs & DOM(Refs-DOM)', title: 'RefsDom'},
+    {id: 3, name: '非受控组件(Comp-UnControl)', title: 'unControl'},
+    {id: 4, name: '性能优化(Optimize Update)', title: 'update'},
+    {id: 5, name: 'Reconciliation', title: 'reconciliation'},
+    {id: 6, name: 'Context', title: 'context'},
+    {id: 7, name: 'Web Components', title: 'web-components'},
+    {id: 8, name: '高阶组件(Higher Components)', title: 'higher-components'},
+    {id: 9, name: '与第三方库协同(Other Libraries)', title: 'other-libraries'},
+    {id: 10, name: '可访问性(Accessibility)', title: 'accessibility'},
+    {id: 11, name: '案例-评论高级(demo)', title: 'commentDemo'}
 ];
 
 class SeniorGuidance extends Component {
@@ -61,18 +62,23 @@ class SeniorGuidance extends Component {
         this.handleSelect = this.handleSelect.bind(this);
     }
 
-    // componentWillMount() {
-    //     this.state.names.map((name) => {
-    //
-    //     })
-    // }
+    componentWillMount() {
+        let title = window.location.hash;
+
+        this.state.names.map((name, index) => {
+            if (title.indexOf(name.title) > -1) {
+                name.select = true;
+                this.props.selectChange(index + 1);
+            }
+        })
+    }
 
     handleSelect(key) {
-        // this.props.history.push('/' + names.title);
         this.props.selectChange(key);
         this.state.names.map((nameSelect, index) => {
             if (key - 1 === index) {
                 nameSelect.select = true;
+                hashHistory.push('/concept' + '/'+ nameSelect.title);
             }
             else {
                 delete nameSelect.select;
@@ -85,9 +91,10 @@ class SeniorGuidance extends Component {
 
     initChange() {
         this.props.selectChange();
+        hashHistory.push('/concept');
         this.state.names.map((name) => {
             name.select = false;
-        })
+        });
         this.setState({
             names: this.state.names
         });
