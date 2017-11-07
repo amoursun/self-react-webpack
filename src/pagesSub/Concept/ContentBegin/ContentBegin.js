@@ -1,8 +1,19 @@
 import React, {Component} from 'react';
 
+// one
+// function LiItem(props) {
+//     return <li>{props.value}</li>;
+// }
 
-function LiItem(props) {
-    return <li>{props.value}</li>;
+// three class定义构造函数
+class Person{
+    constructor(value, index) {
+        this.value = value;
+        this.index = index;
+    };
+    introduce () {
+        return <li key={this.index}>{this.value}</li>;
+    }
 }
 
 class ContentLists extends Component {
@@ -16,8 +27,12 @@ class ContentLists extends Component {
                     <h4>内容</h4>
                     <ul>
                         {nameDatas.map(
+                            // three
+                            (value, index) => new Person(value, index).introduce()
+                            // one
                             // (value, index) => <LiItem key={index} value={value}/>
-                            (value, index) => <li key={index}>{value}</li>
+                            // two
+                            // (value, index) => <li key={index}>{value}</li>
                         )}
                     </ul>
                 </div>
