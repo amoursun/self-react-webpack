@@ -28,7 +28,7 @@ function List(props) {
 }
 
 const reduxCodes = [
-    {id: 1, content: '无 Redux 状态管理', name: 'unRedux'},
+    {id: 1, content: '无 Redux 状态管理', name: 'unredux'},
     {id: 2, content: 'Redux 状态管理', name: 'redux'}
 ];
 
