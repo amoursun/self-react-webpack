@@ -37,7 +37,7 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to={{pathname: 'concept', hash:'#/concept'}} activeStyle={{color: 'purple'}}>
+                        <Link to={{pathname: 'concept'}} activeStyle={{color: 'purple'}}>
                             Concept
                         </Link>
                     </li>

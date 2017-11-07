@@ -30,7 +30,7 @@ class Concept extends Component {
                    <SeniorGuidance selectContent={this.state.key} selectChange={this.select}/>
                </div>
                <div className="nav-content">
-                   <GuidanceContent content={this.state.key}/>
+                   <GuidanceContent contentKey={this.state.key}/>
                </div>
            </div>
        )

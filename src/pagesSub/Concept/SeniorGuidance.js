@@ -66,6 +66,7 @@ class SeniorGuidance extends Component {
         let title = window.location.hash;
 
         this.state.names.map((name, index) => {
+            delete name.select;
             if (title.indexOf(name.title) > -1) {
                 name.select = true;
                 this.props.selectChange(index + 1);
@@ -73,12 +74,12 @@ class SeniorGuidance extends Component {
         })
     }
 
-    handleSelect(key) {
+    handleSelect = (key) => {
         this.props.selectChange(key);
         this.state.names.map((nameSelect, index) => {
             if (key - 1 === index) {
                 nameSelect.select = true;
-                hashHistory.push('/concept' + '/'+ nameSelect.title);
+                hashHistory.push(`/concept/${nameSelect.title}`);
             }
             else {
                 delete nameSelect.select;
@@ -89,11 +90,11 @@ class SeniorGuidance extends Component {
         });
     }
 
-    initChange() {
+    initChange = () => {
         this.props.selectChange();
         hashHistory.push('/concept');
         this.state.names.map((name) => {
-            name.select = false;
+            delete name.select;
         });
         this.setState({
             names: this.state.names
