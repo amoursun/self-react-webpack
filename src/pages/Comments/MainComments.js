@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './MainComments.less';
 import CommentsCenterOne from './UnReduxComments/CommentsCenterOne';
 import CommentsCenterTwo from './ReduxComments/CommentsCenterTwo';
+import { hashHistory } from 'react-router';
 
 
 class ShowComment extends Component {
@@ -21,14 +22,14 @@ class ShowComment extends Component {
 function List(props) {
     return <li
         onClick={props.handleSelect.bind(this, props.id)}
-        style={props.isSelect ? {color: '#00ff3d'} : {}}>
+        style={props.isSelect ? {color: '#979c12'} : {}}>
             {props.value}
         </li>;
 }
 
 const reduxCodes = [
-    {id: 1, content: '无 Redux 状态管理'},
-    {id: 2, content: 'Redux 状态管理'}
+    {id: 1, content: '无 Redux 状态管理', name: 'unredux'},
+    {id: 2, content: 'Redux 状态管理', name: 'redux'}
 ];
 
 class MainComments extends Component {
@@ -43,15 +44,32 @@ class MainComments extends Component {
     }
 
     componentWillMount() {
-        this.state.reduxs.map((redux) => {
-            if (redux.id === 1) redux.select = true;
+        const { reduxs } = this.state;
+        let name = window.location.hash;
+        let id = '';
+
+        reduxs.map((redux) => {
+            redux.select = '';
+            if (name.indexOf(redux.name) > -1) {
+                redux.select = true;
+                id = redux.id;
+                this.setState({ id: redux.id });
+            }
         })
+
+        id ? '' : reduxs[0].select = true;
+        id ? '' : hashHistory.push(`/comments/${reduxs[0].name}`);
     }
 
     handleSelect(index) {
         this.state.reduxs.map((redux) => {
-            if (redux.id === index) redux.select = true;
-            if (redux.id !== index) redux.select = '';
+            if (redux.id === index) {
+                redux.select = true;
+                hashHistory.push(`/comments/${redux.name}`);
+            }
+            else {
+                redux.select = '';
+            }
         });
         this.setState({
             reduxs: this.state.reduxs,

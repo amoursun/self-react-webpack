@@ -22,7 +22,7 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/user/Xiaoming" activeStyle={{color: 'red'}}>
+                        <Link to="/user" activeStyle={{color: 'red'}}>
                             User
                         </Link>
                     </li>
@@ -37,7 +37,7 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/concept" activeStyle={{color: 'purple'}}>
+                        <Link to={{pathname: 'concept'}} activeStyle={{color: 'purple'}}>
                             Concept
                         </Link>
                     </li>

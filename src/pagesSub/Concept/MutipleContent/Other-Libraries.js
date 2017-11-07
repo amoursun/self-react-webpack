@@ -16,7 +16,7 @@ class OtherLibraries extends Component {
     render() {
         return(
             <div>
-                <h2>内容8</h2>
+                <h2>与第三方库协同(Other Libraries)</h2>
                 <ContentLists />
             </div>
         )

@@ -71,16 +71,16 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     cacheDirectory: true,
-                    // presets: ["es2015", "react", "stage-3"]
-                    presets: ["env", "react", "stage-3"]
+                    // presets: ["es2015", "react", "stage-1"]
+                    presets: ["env", "react", "stage-1"]
                 }
             },
             {
-                test: /\.(html)$/,
+                test: /\.html$/,
                 loader: 'html-loader?attrs=img:src'
             },
             {
-                test: /\.(js)$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             }

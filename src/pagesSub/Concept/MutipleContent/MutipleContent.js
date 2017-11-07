@@ -9,8 +9,9 @@ import Reconciliation from './Reconciliation';
 import RefsDOM from './Refs-DOM';
 import WebComponents from './Web-Components';
 import SeniorComments from './Senior-Comments';
+import PropTypeJs from './PropTypes';
 
-const Names = [ RefsDOM, CompUnControl, OptimizeUpdate,
+const Names = [ PropTypeJs, RefsDOM, CompUnControl, OptimizeUpdate,
                 Reconciliation, Context, WebComponents,
                 HigherComponents, OtherLibraries, Accessibility, SeniorComments ];
 

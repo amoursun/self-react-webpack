@@ -16,7 +16,7 @@ class HigherComponents extends Component {
     render() {
         return(
             <div>
-                <h2>内容7</h2>
+                <h2>高阶组件(Higher Components)</h2>
                 <ContentLists />
             </div>
         )
