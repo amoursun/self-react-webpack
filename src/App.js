@@ -47,8 +47,8 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/table" activeStyle={{color: '#fd5624'}}>
-                            TablePage
+                        <Link to="/brothernews" activeStyle={{color: '#fd5624'}}>
+                            BrotherNews
                         </Link>
                     </li>
                     <li>
