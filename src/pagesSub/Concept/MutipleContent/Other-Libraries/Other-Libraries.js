@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Other-Libraries.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class OptimizeUpdate extends Component {
+class OtherLibraries extends Component {
     render() {
         return(
             <div>
-                <h2>性能优化(Optimize Update)</h2>
+                <h2>与第三方库协同(Other Libraries)</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default OptimizeUpdate;
+export default OtherLibraries;

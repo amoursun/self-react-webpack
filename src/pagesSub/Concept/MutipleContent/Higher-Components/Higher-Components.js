@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Higher-Components.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class OtherLibraries extends Component {
+class HigherComponents extends Component {
     render() {
         return(
             <div>
-                <h2>与第三方库协同(Other Libraries)</h2>
+                <h2>高阶组件(Higher Components)</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default OtherLibraries;
+export default HigherComponents;

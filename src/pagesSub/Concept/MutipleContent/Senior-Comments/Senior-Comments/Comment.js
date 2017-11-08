@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Util from './../../../../containers/util';
+import Util from './../../../../../containers/util';
 
 
 class Comment extends Component {

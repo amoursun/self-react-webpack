@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Optimize-Update.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class Reconciliation extends Component {
+class OptimizeUpdate extends Component {
     render() {
         return(
             <div>
-                <h2>Reconciliation</h2>
+                <h2>性能优化(Optimize Update)</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default Reconciliation;
+export default OptimizeUpdate;

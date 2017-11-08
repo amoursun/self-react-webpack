@@ -88,7 +88,7 @@ class SeniorGuidance extends Component {
         this.setState({
             names: this.state.names
         });
-    }
+    };
 
     initChange = () => {
         this.props.selectChange();
@@ -99,7 +99,7 @@ class SeniorGuidance extends Component {
         this.setState({
             names: this.state.names
         });
-    }
+    };
 
     render() {
         const { names } = this.state;

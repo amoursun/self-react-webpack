@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Accessibility.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class CompUnControl extends Component {
+class Accessibility extends Component {
     render() {
         return(
             <div>
-                <h2>非受控组件(Comp-UnControl)</h2>
+                <h2>可访问性(Accessibility)</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default CompUnControl;
+export default Accessibility;

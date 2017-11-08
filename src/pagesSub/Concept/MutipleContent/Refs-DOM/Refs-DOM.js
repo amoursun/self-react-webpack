@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Refs-DOM.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class Context extends Component {
+class RefsDOM extends Component {
     render() {
         return(
             <div>
-                <h2>Context</h2>
+                <h2>Refs-DOM</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default Context;
+export default RefsDOM;
