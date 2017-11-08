@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Router, Route, hashHistory, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute, Redirect } from 'react-router';
 import './index.css';
 import App from './App';
 
