@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Reconciliation.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class Accessibility extends Component {
+class Reconciliation extends Component {
     render() {
         return(
             <div>
-                <h2>可访问性(Accessibility)</h2>
+                <h2>Reconciliation</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default Accessibility;
+export default Reconciliation;

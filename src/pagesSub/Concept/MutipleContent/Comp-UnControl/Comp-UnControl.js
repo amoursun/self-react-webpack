@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './Comp-UnControl.less';
 
 class ContentLists extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentLists extends Component {
     }
 }
 
-class WebComponents extends Component {
+class CompUnControl extends Component {
     render() {
         return(
             <div>
-                <h2>Web Components</h2>
+                <h2>非受控组件(Comp-UnControl)</h2>
                 <ContentLists />
             </div>
         )
     }
 }
 
-export default WebComponents;
+export default CompUnControl;
