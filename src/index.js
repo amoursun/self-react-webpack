@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute, Redirect } from 'react-router';
-import './index.css';
+import './index.less';
 import App from './App';
 
 import Home from './pages/Home/Home';
@@ -55,8 +55,11 @@ const routeConfig = [
                 ]
             },
             {
-                path: 'brothernews',
-                component: BrotherNews
+                path: 'brotherNews',
+                component: BrotherNews,
+                childRoutes: [
+                    { path: '/brotherNews/:name', component: BrotherNews }
+                ]
             },
             {
                 path: 'newShopTable',

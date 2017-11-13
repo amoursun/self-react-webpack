@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.png';
 import {IndexLink, Link} from 'react-router';
-import './App.css';
+import './App.less';
 
 class App extends Component {
   render() {
@@ -47,7 +47,7 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/brothernews" activeStyle={{color: '#fd5624'}}>
+                        <Link to="/brotherNews" activeStyle={{color: '#fd5624'}}>
                             BrotherNews
                         </Link>
                     </li>

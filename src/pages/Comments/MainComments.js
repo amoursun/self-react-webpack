@@ -62,7 +62,8 @@ class MainComments extends Component {
     }
 
     handleSelect(index) {
-        this.state.reduxs.map((redux) => {
+        const { reduxs } = this.state;
+        reduxs.map((redux) => {
             if (redux.id === index) {
                 redux.select = true;
                 hashHistory.push(`/comments/${redux.name}`);
