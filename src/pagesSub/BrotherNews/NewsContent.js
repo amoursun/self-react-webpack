@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Context from './Context/Context';
 import Events from './Events/Events';
 import PubSub from './PubSub/PubSub';
+import ReduxAndTrusdux from './Redux&Trusdux/Redux&Trusdux';
 
 export default class NewsContent extends Component {
 
@@ -12,7 +13,8 @@ export default class NewsContent extends Component {
                 <h5>兄弟组件通信 <span>{newsData[showKey - 1].content}</span> 方法: </h5>
                 {
                     showKey === 1 ? <Context /> :
-                        showKey === 2 ? <PubSub /> : <Events />
+                        showKey === 2 ? <PubSub /> :
+                            showKey === 3 ? <Events /> : <ReduxAndTrusdux />
                 }
             </div>
         )

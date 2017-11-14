@@ -7,7 +7,8 @@ import NewsContent from './../../pagesSub/BrotherNews/NewsContent'
 const news = [
     {id: 1, content: 'Context(上下文)', name: 'context'},
     {id: 2, content: 'Publish-Subscribe(发布订阅)', name: 'PubSub'},
-    {id: 3, content: 'events(自定义事件的方式)', name: 'events'}
+    {id: 3, content: 'events(自定义事件的方式)', name: 'events'},
+    {id: 4, content: 'Redux & transdux', name: 'transduxAndRedux'}
 ];
 
 // const Item = (props) => {
