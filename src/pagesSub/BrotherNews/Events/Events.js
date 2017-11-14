@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Events.less';
 import EventEmitter from './EventEmitter';
+import FooBoo from "./FooBoo";
 
 
 class CurItemPanel extends Component {
@@ -70,6 +71,10 @@ export default class Events extends Component {
                 <div className="events">
                     <CurItemPanel />
                     <SelectionButtons/>
+                </div>
+                <div>
+                    <h5>引入events插件例子(事件订阅):自定义事件是典型的发布/订阅模式</h5>
+                    <FooBoo />
                 </div>
             </div>
         )

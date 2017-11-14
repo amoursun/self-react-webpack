@@ -81,6 +81,7 @@ export default class MyContainer extends Component {
     render() {
         return (
             <div className="context">
+                <h5>例子如下: </h5>
                 <CurItemWrapper />
                 <ListWrapper changeItem={this.changeItem}/>
             </div>
