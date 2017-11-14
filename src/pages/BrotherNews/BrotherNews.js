@@ -31,6 +31,7 @@ export default class BrotherNews extends Component {
 
     componentWillMount = () => {
         const { key, news } = this.state;
+        news.map(value => delete value.select);
         let name = window.location.hash.substring(window.location.hash.lastIndexOf('/') + 1);
         name === 'brotherNews' ? this.showSingle(news) : this.showMany(news, name);
     };
