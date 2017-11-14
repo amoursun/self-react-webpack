@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import eventProxy from './eventProxy'
 
 export default class PB extends Component{
+    // componentWillMount() {
+    //     eventProxy.off('msg');
+    //     eventProxy.off('good');
+    // }
+
     render() {
         return (
             <div>
@@ -41,17 +46,17 @@ class Child_2 extends Component{
 
     componentDidUpdate() {
         console.log('Child_2 update');
-        setTimeout(() => {
-            // 发布 msg 事件
-            eventProxy.trigger('good', 'Child_2_1 end => console.log(Child_2_1 end)');
-        }, 3000);
     }
 
     componentDidMount() {
         // 监听 msg 事件
-        eventProxy.on('msg', (msg) => {
+        eventProxy.one('msg', (msg) => {
+            setTimeout(() => {
+                // 发布 msg 事件
+                eventProxy.trigger('good', 'Child_2_1 end => console.log(Child_2_1 end)');
+            }, 3000);
             this.setState({
-                msg
+                msg: msg
             });
         });
     }
@@ -77,7 +82,7 @@ class Child_2_1 extends Component{
 
     componentDidMount() {
         // 监听 msg 事件
-        eventProxy.on('good', (goodMsg) => {
+        eventProxy.one('good', (goodMsg) => {
             this.setState({
                 good: goodMsg
             });
