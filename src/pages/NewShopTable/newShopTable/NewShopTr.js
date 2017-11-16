@@ -62,23 +62,12 @@ export default class NewShopTr extends Component {
         this.selectedCheckboxes = new Set();
     };
 
-    handleBlurName(e) {
-        editData.name = e.target.value;
-    };
+    handleBlurName = e => editData.name = e.target.value;
+    handleBlurAge = e => editData.age = e.target.value;
+    handleBlurHeight = e => editData.age = e.target.value;
+    handleBlurWeight = e => editData.age = e.target.value;
 
-    handleBlurAge(e) {
-        editData.age = e.target.value;
-    };
-
-    handleBlurHeight(e) {
-        editData.height = e.target.value;
-    };
-
-    handleBlurWeight(e) {
-        editData.weight = e.target.value;
-    };
-
-    onDelete(e) {
+    onDelete = (e) => {
         const { data, onDelete } = this.props;
         onDelete && onDelete({
             id: data.id
@@ -86,13 +75,13 @@ export default class NewShopTr extends Component {
 
     }
 
-    onCopy(e) {
+    onCopy = (e) => {
         const { data, onCopy } = this.props;
         let copyData = Object.create(data);
         onCopy && onCopy(copyData);
     }
 
-    onEdit(e) {
+    onEdit = (e) => {
         const {data} = this.props;
         editData = data;
         this.setState({edit: true});
@@ -100,24 +89,25 @@ export default class NewShopTr extends Component {
 
     }
 
-    onEditing(e) {
+    onEditing = (e) => {
         this.setState({edit: false});
         const { onEdit } = this.props;
         onEdit && onEdit(editData);
     }
 
-    checkSingle(label) {
-        const { obj } = this.props;
+    checkSingle = (label) => {
+        const { obj, data } = this.props;
+
 
         if (obj[label]) {
-            var isCheckedAll = false;
             delete obj[label];
+            data.select = false;
         } else {
             obj[label] = label;
         }
 
         const { onCheckSingle } = this.props;
-        onCheckSingle && onCheckSingle(obj, isCheckedAll);
+        onCheckSingle && onCheckSingle(obj, data);
     }
 
     render() {
@@ -131,7 +121,7 @@ export default class NewShopTr extends Component {
                         {/*<input type="checkbox" onClick={this.checkSingle}/>*/}
                     {/*</div>*/}
                     <Checkbox label={data.id}
-                              isCheckedAll={this.props.isCheckedAll}
+                              isCheckedAll={data.select}
                               handleCheckboxChange={this.checkSingle}
                               key={data.id} />
                 </div>

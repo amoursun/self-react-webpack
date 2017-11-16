@@ -1,56 +1,44 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import NewShopTr from './NewShopTr';
 import CheckboxAll from './CheckboxAll';
+import EventEmitter from './EventEmitter';
 import PropTypes from 'prop-types';
 
 var obj = {};
-var selectedAllCheckboxes = [];
 
 export default class NewShopTable extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isCheckedAll: false
-        };
+
         this.checkAll = this.checkAll.bind(this);
         this.deletes = this.deletes.bind(this);
         this.onCheckSingle = this.onCheckSingle.bind(this);
     }
 
-    componentWillMount() {
-        this.props.data.map(value => {
-            selectedAllCheckboxes.push(value.id);
-        });
-    }
-
-    componentWillReceiveProps() {
-        selectedAllCheckboxes = [];
-        this.props.data.map(value => {
-            selectedAllCheckboxes.push(value.id);
-        });
-    }
-
-    onCheckSingle(info, checked) {
+    onCheckSingle = (info, infoItem) => {
+        let checked = '';
         obj = info;
-    }
+        infoItem.select ? '' : checked = false;
+        EventEmitter.dispatch('changeItem', checked);
+    };
 
-    deletes() {
+    deletes = () => {
         this.props.deletes(obj);
     }
 
-    checkAll(arr, checked) {
-        let arrObj = {};
-
-        arr.map(value => {
-            arrObj[value] = value;
+    checkAll = (checked) => {
+        obj = {};
+        let { checkBox, data } = this.props;
+        data.map(dt => {
+            dt.select = checked;
+            obj[dt.id] = dt.id;
         });
-        obj = arrObj;
+        checkBox(data);
 
-        this.setState({ isCheckedAll: checked })
     }
 
     render() {
-        const tableData = this.props.data;
+        const { onEdit, onCopy, onDelete, add, data } = this.props;
         return (
             <div className="zent-table ">
                 <div className="thead">
@@ -60,7 +48,6 @@ export default class NewShopTable extends Component {
                                 {/*<input type="checkbox" onClick={this.checkAll}/>*/}
                             {/*</div>*/}
                             <CheckboxAll
-                                labelAll={selectedAllCheckboxes}
                                 handleCheckboxAllChange={this.checkAll} />
                         </div>
                         <div className="cell">
@@ -92,19 +79,17 @@ export default class NewShopTable extends Component {
                     </div>
                 </div>
                 <div className="tbody">
-                    {tableData.map(i => <NewShopTr
-                                            onEdit={this.props.onEdit}
-                                            onCopy={this.props.onCopy}
-                                            onDelete={this.props.onDelete}
+                    {data.map(i => <NewShopTr
+                                            onEdit={onEdit}
+                                            onCopy={onCopy}
+                                            onDelete={onDelete}
                                             onCheckSingle={this.onCheckSingle}
                                             key={i.id}
-                                            id={i.id}
                                             obj={obj}
-                                            isCheckedAll={this.state.isCheckedAll}
                                             data={i} />)}
                 </div>
                 <div className="button">
-                    <button onClick={this.props.add}>add</button>
+                    <button onClick={add}>add</button>
                     <button onClick={this.deletes}>deletes</button>
                 </div>
             </div>

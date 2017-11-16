@@ -65,19 +65,19 @@ class SeniorGuidance extends Component {
     componentWillMount() {
         let title = window.location.hash;
 
-        this.state.names.map((name, index) => {
+        this.state.names.map(name => {
             delete name.select;
             if (title.indexOf(name.title) > -1) {
                 name.select = true;
-                this.props.selectChange(index + 1);
+                this.props.selectChange(name.id);
             }
         })
     }
 
     handleSelect = (key) => {
         this.props.selectChange(key);
-        this.state.names.map((nameSelect, index) => {
-            if (key - 1 === index) {
+        this.state.names.map(nameSelect => {
+            if (key === nameSelect.id) {
                 nameSelect.select = true;
                 hashHistory.push(`/concept/${nameSelect.title}`);
             }

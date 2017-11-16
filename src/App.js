@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.png';
 import {IndexLink, Link} from 'react-router';
-import './App.css';
+import './App.less';
 
 class App extends Component {
   render() {
@@ -9,7 +9,7 @@ class App extends Component {
         <div className="App">
             <div className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <h3>React Router Tutorial</h3>
+                <h3>Learning React & Router</h3>
                 <ul className="nav">
                     <li>
                         <IndexLink to="/" activeClassName="active">
@@ -47,8 +47,8 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/table" activeStyle={{color: '#fd5624'}}>
-                            TablePage
+                        <Link to="/brotherNews" activeStyle={{color: '#fd5624'}}>
+                            BrotherNews
                         </Link>
                     </li>
                     <li>

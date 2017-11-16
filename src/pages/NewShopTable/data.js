@@ -17,18 +17,13 @@ export const dataGenerate = () => {
         age: randomNum(100),
         height: randomNum(1000),
         weight: randomNum(100),
-        hobby: {
-            movie: {
-                name: randomId(),
-                director: randomId()
-            }
-        }
+        select: false
     }
 };
 
 export const Data = {
-    dataSets: new Array(5).fill(0).map(() => dataGenerate()),
-    dataList: new Array(5).fill(0).map(() => dataGenerateBegin())
+    dataSets: new Array(20).fill(0).map(() => dataGenerate()),
+    dataList: new Array(20).fill(0).map(() => dataGenerateBegin())
 };
 // export const dataSets = new Array(5).fill(0).map(() => dataGenerate());
 //

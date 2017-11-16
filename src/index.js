@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute, Redirect } from 'react-router';
-import './index.css';
+import './index.less';
 import App from './App';
 
 import Home from './pages/Home/Home';
@@ -11,7 +11,7 @@ import Contacts from './pages/Contacts/Contacts';
 import Cast from './pages/Cast/Cast';
 import  Concept from './pages/Concept/Concept';
 import Comments from './pages/Comments/MainComments';
-import TablePage from './pages/TablePage/TablePage';
+import BrotherNews from './pages/BrotherNews/BrotherNews';
 import NewShopTable from './pages/NewShopTable/NewShopTable';
 
 
@@ -55,8 +55,11 @@ const routeConfig = [
                 ]
             },
             {
-                path: 'table',
-                component: TablePage
+                path: 'brotherNews',
+                component: BrotherNews,
+                childRoutes: [
+                    { path: '/brotherNews/:name', component: BrotherNews }
+                ]
             },
             {
                 path: 'newShopTable',
@@ -66,5 +69,5 @@ const routeConfig = [
     }
 ];
 
-
+// react-router 3.0.5
 ReactDOM.render(<Router history={hashHistory} routes={routeConfig} />, document.getElementById('root'));
