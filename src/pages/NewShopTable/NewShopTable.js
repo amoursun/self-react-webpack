@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
 import './NewShopTable.less';
 import { Data, dataGenerate } from './data';
-import NewShopTable from '../../components/newShopTable/NewShopTable';
+import NewShopTable from './newShopTable/NewShopTable';
 import PropTypes from 'prop-types';
 
 
 function objFunc(data, obj) {
     let arr = [];
-
     data.map(value => {
         if (!obj[value.id]) {
-            arr.push(value);
+           arr.push(value);
         }
     });
-
     return arr;
 }
 
@@ -21,17 +19,23 @@ export default class NewShopTables extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: Data.dataSets,
-            arr: []
+            data: Data.dataSets
         };
         this.add = this.add.bind(this);
         this.deletes = this.deletes.bind(this);
         this.edit = this.edit.bind(this);
         this.copy = this.copy.bind(this);
         this.del = this.del.bind(this);
+        this.checkBox = this.checkBox.bind(this);
     }
 
-    add() {
+    checkBox = (data) => {
+        this.setState({
+            data
+        })
+    }
+
+    add = () => {
         const  { data } = this.state;
         data.push(dataGenerate());
         this.setState({
@@ -39,14 +43,14 @@ export default class NewShopTables extends Component {
         })
     };
 
-    deletes(obj) {
+    deletes = (obj) => {
         const  { data } = this.state;
         this.setState({
             data: objFunc(data, obj)
         })
     };
 
-    edit(info) {
+    edit = (info) => {
         const  { data } = this.state;
         let num = 0;
         data.map((value, i) => {
@@ -60,7 +64,7 @@ export default class NewShopTables extends Component {
         });
     };
 
-    copy(info) {
+    copy = (info) => {
         const  { data } = this.state;
         let num = 0;
         data.map((val, i)=> {
@@ -77,7 +81,7 @@ export default class NewShopTables extends Component {
         });
     }
 
-    del(info) {
+    del = (info) => {
         const  { data } = this.state;
         let num = 0;
         data.map((val, i)=> {
@@ -93,6 +97,7 @@ export default class NewShopTables extends Component {
     }
 
     render() {
+        const { arr, data } = this.state;
         return (
             <div className="new-shop-table">
                 <NewShopTable
@@ -101,8 +106,8 @@ export default class NewShopTables extends Component {
                     onDelete={this.del}
                     add={this.add}
                     deletes={this.deletes}
-                    arr={this.state.arr}
-                    data={this.state.data} />
+                    checkBox={this.checkBox}
+                    data={data} />
             </div>
         )
     }
@@ -111,6 +116,8 @@ export default class NewShopTables extends Component {
 NewShopTables.propTypes = {
     data: PropTypes.array
 };
+
+
 
 
 

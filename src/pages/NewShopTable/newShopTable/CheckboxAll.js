@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import EventEmitter from './EventEmitter';
 
 class CheckboxAll extends Component {
     constructor(props) {
@@ -10,8 +11,21 @@ class CheckboxAll extends Component {
         this.toggleCheckboxAllChange = this.toggleCheckboxAllChange.bind(this);
     };
 
-    toggleCheckboxAllChange() {
-        const { handleCheckboxAllChange, labelAll } = this.props;
+    componentDidMount = () => {
+        let self = this;
+        EventEmitter.subscribe('changeItem', (newItem) => {
+            self.setState({
+                isCheckedAll: newItem
+            });
+        })
+    };
+
+    componentWillUnmount = () => {
+        EventEmitter.unSubscribe('changeItem');
+    };
+
+    toggleCheckboxAllChange = () => {
+        const { handleCheckboxAllChange } = this.props;
 
         this.setState(({ isCheckedAll }) => (
             {
@@ -24,14 +38,13 @@ class CheckboxAll extends Component {
         //     }
         // ));
 
-        handleCheckboxAllChange(labelAll, !this.state.isCheckedAll);
+        handleCheckboxAllChange(!this.state.isCheckedAll);
     };
 
 
 
     render() {
 
-        const { labelAll } = this.props;
         const { isCheckedAll } = this.state;
 
         return (
@@ -39,7 +52,6 @@ class CheckboxAll extends Component {
                 <label>
                     <input
                         type="checkbox"
-                        value={labelAll}
                         checked={isCheckedAll}
                         onChange={this.toggleCheckboxAllChange}
                     />

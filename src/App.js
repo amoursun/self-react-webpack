@@ -9,7 +9,7 @@ class App extends Component {
         <div className="App">
             <div className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <h3>React Router Tutorial</h3>
+                <h3>Learning React & Router</h3>
                 <ul className="nav">
                     <li>
                         <IndexLink to="/" activeClassName="active">
