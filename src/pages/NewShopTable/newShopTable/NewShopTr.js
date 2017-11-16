@@ -98,12 +98,12 @@ export default class NewShopTr extends Component {
     checkSingle = (label) => {
         const { obj, data } = this.props;
 
-
         if (obj[label]) {
             delete obj[label];
             data.select = false;
         } else {
             obj[label] = label;
+            data.select = true;
         }
 
         const { onCheckSingle } = this.props;

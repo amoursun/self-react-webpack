@@ -16,10 +16,17 @@ export default class NewShopTable extends Component {
     }
 
     onCheckSingle = (info, infoItem) => {
-        let checked = '';
+        const {data} = this.props;
         obj = info;
-        infoItem.select ? '' : checked = false;
-        EventEmitter.dispatch('changeItem', checked);
+        let selectAll = true;
+        data.map(v => {
+            if (!v.select) {
+                selectAll = false;
+            }
+        })
+        infoItem.select && selectAll ?
+            EventEmitter.dispatch('changeItem', true) :
+            EventEmitter.dispatch('changeItem', false);
     };
 
     deletes = () => {
