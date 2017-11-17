@@ -45,7 +45,7 @@ export default class NewShopTables extends Component {
 
     deletes = (obj) => {
         const  { data } = this.state;
-        this.setState({
+        JSON.stringify(obj) === "{}" ? alert('删除内容不能为空') : this.setState({
             data: objFunc(data, obj)
         })
     };

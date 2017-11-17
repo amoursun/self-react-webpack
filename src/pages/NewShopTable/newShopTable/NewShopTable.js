@@ -4,7 +4,7 @@ import CheckboxAll from './CheckboxAll';
 import EventEmitter from './EventEmitter';
 import PropTypes from 'prop-types';
 
-var obj = {};
+let obj = {};
 
 export default class NewShopTable extends Component {
     constructor(props) {
@@ -30,16 +30,20 @@ export default class NewShopTable extends Component {
     };
 
     deletes = () => {
-        this.props.deletes(obj);
+        this.o = false;
+        this.props.data.map(d => {
+             if (obj[d.id]) {
+                 this.o = true;
+             }
+        })
+        this.o ? this.props.deletes(obj) : this.props.deletes({});
     }
 
     checkAll = (checked) => {
         obj = {};
         let { checkBox, data } = this.props;
-        data.map(dt => {
-            dt.select = checked;
-            obj[dt.id] = dt.id;
-        });
+        data.map(dt => dt.select = checked);
+        data.map(dt => dt.select ? obj[dt.id] = dt.id : '')
         checkBox(data);
 
     }
