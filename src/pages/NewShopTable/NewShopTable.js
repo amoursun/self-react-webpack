@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './NewShopTable.less';
 import { Data, dataGenerate } from './data';
 import NewShopTable from './newShopTable/NewShopTable';
+import EventEmitter from './newShopTable/EventEmitter';
 import PropTypes from 'prop-types';
 
 
@@ -27,6 +28,23 @@ export default class NewShopTables extends Component {
         this.copy = this.copy.bind(this);
         this.del = this.del.bind(this);
         this.checkBox = this.checkBox.bind(this);
+        this.copyMany = this.copyMany.bind(this);
+    }
+
+    copyMany(copyData) {
+        const { data } = this.state;
+        let newCopyData = new Array();
+        copyData.map(copy => {
+            let obj = Object.create(copy)
+            obj.name = 'copy' + Math.random().toString(36).substring(8) + '-' + obj.name;
+            obj.id = dataGenerate().id;
+            obj.select = false;
+            newCopyData.push(obj);
+        })
+        EventEmitter.dispatch('changeItem', false)
+        this.setState({
+            data: data.concat(newCopyData)
+        })
     }
 
     checkBox = (data) => {
@@ -97,7 +115,7 @@ export default class NewShopTables extends Component {
     }
 
     render() {
-        const { arr, data } = this.state;
+        const { data } = this.state;
         return (
             <div className="new-shop-table">
                 <NewShopTable
@@ -106,6 +124,7 @@ export default class NewShopTables extends Component {
                     onDelete={this.del}
                     add={this.add}
                     deletes={this.deletes}
+                    copyMany={this.copyMany}
                     checkBox={this.checkBox}
                     data={data} />
             </div>
