@@ -22,8 +22,8 @@ export const dataGenerate = () => {
 };
 
 export const Data = {
-    dataSets: new Array(20).fill(0).map(() => dataGenerate()),
-    dataList: new Array(20).fill(0).map(() => dataGenerateBegin())
+    dataSets: new Array(10).fill(0).map(() => dataGenerate()),
+    dataList: new Array(10).fill(0).map(() => dataGenerateBegin())
 };
 // export const dataSets = new Array(5).fill(0).map(() => dataGenerate());
 //

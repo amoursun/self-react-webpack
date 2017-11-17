@@ -12,6 +12,7 @@ export default class NewShopTable extends Component {
 
         this.checkAll = this.checkAll.bind(this);
         this.deletes = this.deletes.bind(this);
+        this.copyMany = this.copyMany.bind(this);
         this.onCheckSingle = this.onCheckSingle.bind(this);
     }
 
@@ -37,6 +38,13 @@ export default class NewShopTable extends Component {
              }
         })
         this.o ? this.props.deletes(obj) : this.props.deletes({});
+    }
+
+    copyMany() {
+        const { copyMany, data } = this.props;
+        let copyDataArr = new Array();
+        data.map(d => d.select ? copyDataArr.push(d) : '')
+        copyMany && copyMany(copyDataArr);
     }
 
     checkAll = (checked) => {
@@ -102,6 +110,7 @@ export default class NewShopTable extends Component {
                 <div className="button">
                     <button onClick={add}>add</button>
                     <button onClick={this.deletes}>deletes</button>
+                    <button onClick={this.copyMany}>copyMany</button>
                 </div>
             </div>
         );
