@@ -9,11 +9,12 @@ import Reconciliation from './Reconciliation/Reconciliation';
 import RefsDOM from './Refs-DOM/Refs-DOM';
 import WebComponents from './Web-Components/Web-Components';
 import SeniorComments from './Senior-Comments/Senior-Comments';
+import ReduxContent from './Redux/Redux';
 import PropTypeJs from './PropTypes/PropTypes';
 
 const Names = [ PropTypeJs, RefsDOM, CompUnControl, OptimizeUpdate,
                 Reconciliation, Context, WebComponents,
-                HigherComponents, OtherLibraries, Accessibility, SeniorComments ];
+                HigherComponents, OtherLibraries, Accessibility, ReduxContent, SeniorComments ];
 
 class MutipleContent extends Component {
     constructor(props) {
