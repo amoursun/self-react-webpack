@@ -49,7 +49,8 @@ const names = [
     {id: 8, name: '高阶组件(Higher Components)', title: 'higher-components'},
     {id: 9, name: '与第三方库协同(Other Libraries)', title: 'other-libraries'},
     {id: 10, name: '可访问性(Accessibility)', title: 'accessibility'},
-    {id: 11, name: '案例-评论高级(demo)', title: 'commentDemo'}
+    {id: 11, name: 'Redux', title: 'redux'},
+    {id: 12, name: '案例-评论高级(demo)', title: 'commentDemo'}
 ];
 
 class SeniorGuidance extends Component {
