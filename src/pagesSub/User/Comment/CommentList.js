@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { ellipsis } from 'polished';
 
 class Comment extends Component {
     constructor(props) {
@@ -13,10 +14,13 @@ class Comment extends Component {
 
     render () {
         const comment = this.props.comment;
+        const styles = {
+            ...ellipsis('200px')
+        };
         return (
             <div className='comment'>
                 <div className='comment-user'>
-                    <span>{comment.username} </span>：
+                    <span style={styles} title={comment.username}>{comment.username} </span>：
                     <span>{moment(comment.date).format('DD-MMM-YY HH:mm:ss')}</span>
                 </div>
                 <div className="comment-content">

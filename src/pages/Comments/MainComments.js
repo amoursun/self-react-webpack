@@ -45,19 +45,18 @@ class MainComments extends Component {
 
     componentWillMount() {
         const { reduxs } = this.state;
-        let name = window.location.hash;
+        let name = window.location.hash.substring(window.location.hash.lastIndexOf('/') + 1);
         let id = '';
 
         reduxs.map((redux) => {
             redux.select = '';
-            if (name.indexOf(redux.name) > -1) {
+            if (name === redux.name) {
                 redux.select = true;
                 id = redux.id;
                 this.setState({ id: redux.id });
             }
-        })
+        });
 
-        id ? '' : reduxs[0].select = true;
         id ? '' : hashHistory.push(`/comments/${reduxs[0].name}`);
     }
 
