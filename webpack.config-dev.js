@@ -122,6 +122,12 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
+        proxy: {
+            '/gm/api/*': {
+                target: 'http://localhost:9090',
+                secure: false
+            }
+        },
         host: host,
         port: port,
         // gzip

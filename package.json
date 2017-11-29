@@ -28,7 +28,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config-dev.js --colors --progress --hot --content-base build",
-    "build": "webpack"
+    "build": "webpack",
+    "mock": "node_modules/.bin/json-server --watch mock/db.json --port 9090",
+    "mockdev": "npm run mock & npm run dev"
   },
   "author": "Ganyanlin",
   "license": "ISC",
@@ -44,10 +46,12 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-3": "^6.22.0",
     "css-loader": "^0.26.1",
+    "faker": "^4.1.0",
     "file-system": "2.2.2",
     "html-loader": "^0.5.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "moment": "2.18.1",
     "prismjs": "^1.6.0",
