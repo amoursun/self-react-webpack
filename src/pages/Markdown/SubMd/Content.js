@@ -10,6 +10,16 @@ const inputs = [
     {id: '3', md: testMd2}
 ];
 
+class ReactMd extends Component {
+    render() {
+        return (
+            <h4>
+                <a href="https://www.npmjs.com/package/react-markdown" target="_blank">react-markdown链接</a>
+            </h4>
+        )
+    }
+}
+
 export default class Content extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +34,7 @@ export default class Content extends Component {
         );
         return(
             <div className="markdown-right">
-                {keyIn ? subList : <ReactMarkdown source="This is none" />}
+                {keyIn ? subList : <ReactMd />}
             </div>
         )
     }
