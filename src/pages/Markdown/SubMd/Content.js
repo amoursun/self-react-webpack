@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import { testMd, testMd2 } from '../md/index'
+
 
 const inputs = [
     {id: '1', md: '# This is a header\n\nAnd this is a paragraph'},
-    {id: '2', md: '# This is two header\n\nAnd this is two paragraph'}
+    {id: '2', md: testMd},
+    {id: '3', md: testMd2}
 ];
 
 export default class Content extends Component {

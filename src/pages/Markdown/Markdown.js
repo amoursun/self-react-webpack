@@ -5,8 +5,9 @@ import Content from './SubMd/Content';
 import { hashHistory } from 'react-router';
 
 const mdNames = [
-    {id: '1', content: '111.md', name: '666', select: false},
-    {id: '2', content: '222.md', name: '999', select: false}
+    {id: '1', content: '111.md', name: '111', select: false},
+    {id: '2', content: 'testMd.md', name: 'testmd', select: false},
+    {id: '3', content: 'testMd2.md', name: 'testmd2', select: false}
 ];
 export default class Markdown extends Component {
     constructor(props) {
