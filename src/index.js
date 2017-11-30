@@ -13,6 +13,7 @@ import  Concept from './pages/Concept/Concept';
 import Comments from './pages/Comments/MainComments';
 import BrotherNews from './pages/BrotherNews/BrotherNews';
 import NewShopTable from './pages/NewShopTable/NewShopTable';
+import Markdown from './pages/Markdown/Markdown';
 
 
 const routeConfig = [
@@ -64,6 +65,13 @@ const routeConfig = [
             {
                 path: 'newShopTable',
                 component: NewShopTable
+            },
+            {
+                path: 'markdown',
+                component: Markdown,
+                childRoutes: [
+                    { path: '/markdown/:name', component: Comments }
+                ]
             }
         ]
     }

@@ -52,8 +52,13 @@ class App extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/newShopTable" activeStyle={{color: '#1d5624'}}>
+                        <Link to="/newShopTable" activeStyle={{color: '#5d719c'}}>
                             NewShopTable
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/markdown" activeStyle={{color: '#30d27c'}}>
+                            Markdown
                         </Link>
                     </li>
                 </ul>
