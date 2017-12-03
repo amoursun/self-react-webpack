@@ -8,11 +8,13 @@ var host = '127.0.0.1';
 var port = '8800';
 
 module.exports = {
+    context: process.cwd(), // process.cwd()是nodejs的启动目录，确定webpack编译上下文，和其他没有任何关系
     //页面入口文件配置
     entry: [
         "babel-polyfill",
         path.resolve(__dirname, "./src/index.js")
     ],
+    // target: 'node',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
@@ -89,6 +91,11 @@ module.exports = {
     //插件项
     plugins: [
         // new UglifyJSPlugin(),//取代内置new webpack.optimize.UglifyJsPlugin
+        new webpack.ProvidePlugin({//
+            'Promise':'es6-promise',
+            // 'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        }),
         // 单独抽离 CSS
         new ExtractTextPlugin('css/[name].bundle.css'),
         new webpack.HotModuleReplacementPlugin(),
@@ -102,7 +109,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './public/index.html',
-            // inject: false,
+            inject: 'body',
             // hash: false,
             // minify: {
             //     //移除HTML中的注释
@@ -110,6 +117,18 @@ module.exports = {
             //     //删除空白符与换行符
             //     collapseWhitespace: false
             // }
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true,
+            }
         })
     ],
     externals: [],
@@ -132,7 +151,7 @@ module.exports = {
         port: port,
         // gzip
         compress: true,
-        contentBase: path.join(__dirname, "build"),
+        contentBase: path.join(__dirname, "public"),//mock数据在哪文件下
         hot: true,
         progress: true,
         // 不跳转

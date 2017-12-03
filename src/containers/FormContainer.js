@@ -3,7 +3,7 @@ import CheckboxOrRadioGroup from '../components/CheckboxOrRadioGroup';
 import SingleInput from '../components/SingleInput';
 import TextArea from '../components/TextArea';
 import Select from '../components/Select';
-import axios from 'axios'
+import axios from 'axios';
 
 class FormContainer extends Component {
     constructor(props) {
@@ -29,7 +29,44 @@ class FormContainer extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     }
     componentDidMount() {
-        axios.get(`https://raw.githubusercontent.com/ganyanlins/api/master/react/self-react-webpack`)
+        //三者均可以
+        // axios.get(`https://raw.githubusercontent.com/ganyanlins/api/master/react/self-react-webpack`)
+        //     .then((res) => {
+        //         this.setState({
+        //             ownerName: res.data.ownerName,
+        //             petSelections: res.data.petSelections,
+        //             selectedPets: res.data.selectedPets,
+        //             ageOptions: res.data.ageOptions,
+        //             ownerAgeRangeSelection: res.data.ownerAgeRangeSelection,
+        //             siblingOptions: res.data.siblingOptions,
+        //             siblingSelection: res.data.siblingSelection,
+        //             currentPetCount: res.data.currentPetCount,
+        //             description: res.data.description
+        //         });
+        //     });
+
+        // fetch('./data/fake_db.json', {
+        //     headers : {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         this.setState({
+        //             ownerName: data.ownerName,
+        //             petSelections: data.petSelections,
+        //             selectedPets: data.selectedPets,
+        //             ageOptions: data.ageOptions,
+        //             ownerAgeRangeSelection: data.ownerAgeRangeSelection,
+        //             siblingOptions: data.siblingOptions,
+        //             siblingSelection: data.siblingSelection,
+        //             currentPetCount: data.currentPetCount,
+        //             description: data.description
+        //         });
+        //     });
+
+        axios.get(`/data/fake_db.json`)
             .then((res) => {
                 this.setState({
                     ownerName: res.data.ownerName,
@@ -43,26 +80,6 @@ class FormContainer extends Component {
                     description: res.data.description
                 });
             });
-        // fetch('public/data/fake_db.json', {
-        //     headers : {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     }
-        // })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 ownerName: data.ownerName,
-    //                 petSelections: data.petSelections,
-    //                 selectedPets: data.selectedPets,
-    //                 ageOptions: data.ageOptions,
-    //                 ownerAgeRangeSelection: data.ownerAgeRangeSelection,
-    //                 siblingOptions: data.siblingOptions,
-    //                 siblingSelection: data.siblingSelection,
-    //                 currentPetCount: data.currentPetCount,
-    //                 description: data.description
-    //             });
-    //         });
     }
     handleFullNameChange(e) {
         this.setState({ ownerName: e.target.value }, () => console.log('name:', this.state.ownerName));
@@ -132,7 +149,7 @@ class FormContainer extends Component {
                     placeholder={'输入宠物名字'} />
                 <Select
                     name={'ageRange'}
-                    placeholder={'选择范围'}
+                    placeholder={'请选择范围'}
                     controlFunc={this.handleAgeRangeSelect}
                     options={this.state.ageOptions}
                     selectedOption={this.state.ownerAgeRangeSelection} />
