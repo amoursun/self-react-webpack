@@ -28,7 +28,7 @@
     "56 - 60",
     "大于60"
   ],
-  "ownerAgeRangeSelection":"666",
+  "ownerAgeRangeSelection":"6666",
   "siblingOptions":[
     "是",
     "否"
@@ -36,7 +36,7 @@
   "siblingSelection":[
     "是"
   ],
-  "currentPetCount":0,
+  "currentPetCount": 2,
   "description":"金三胖"
 }
 

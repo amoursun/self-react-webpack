@@ -7,6 +7,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var host = '127.0.0.1';
 var port = '8800';
 
+
+
 module.exports = {
     context: process.cwd(), // process.cwd()是nodejs的启动目录，确定webpack编译上下文，和其他没有任何关系
     //页面入口文件配置
@@ -17,7 +19,8 @@ module.exports = {
     // target: 'node',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
+        // filename: `[name]${process.env.NODE_ENV === 'production' ? '[chunkhash]' : '[hash]'}.js` // 在配置文件中使用`process.env.NODE_ENV` 安装cross-env --save 处理windows下兼容
     },
     module: {
         //加载器配置
@@ -98,7 +101,10 @@ module.exports = {
         }),
         // 单独抽离 CSS
         new ExtractTextPlugin('css/[name].bundle.css'),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common' // 抽取出的模块的模块名
+        }),
+        new webpack.HotModuleReplacementPlugin(), //热加载  使用process.env.NODE_ENV === 'production' 关闭 HMR 功能,注释此项 相关看[https://segmentfault.com/a/1190000010871559]
         // JS 压缩插件
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
@@ -152,13 +158,15 @@ module.exports = {
         // gzip
         compress: true,
         contentBase: path.join(__dirname, "public"),//mock数据在哪文件下
-        hot: true,
-        progress: true,
-        // 不跳转
-        historyApiFallback: false,
+        watchContentBase: true, //告诉服务器观察devServer.contentBase选项提供的文件。文件更改将触发整页重新加载
+        // hot: true,
+        open: true,
+        // false不跳转 true 跳转404等页面
+        historyApiFallback: true,
         // 实时刷新
         inline: true,
         // 隐藏 webpack 包 bundle 信息，错误和警告仍然会显示。
-        noInfo: true
+        noInfo: true,
+        stats: 'errors-only' //可以精确地控制显示的包信息
     }
 };

@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config-dev.js --colors --progress --hot --content-base build",
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production webpack -p",
     "mock": "node_modules/.bin/json-server --watch mock/db.json --port 9090",
     "mockdev": "npm run mock & npm run dev"
   },

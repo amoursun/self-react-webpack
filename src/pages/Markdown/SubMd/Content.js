@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { testMd, testMd2 } from '../md/index'
+import { testMd, testMd2, testMd3 } from '../md/index'
 
 const inputs = [
     {id: '1', md: '# This is a header\n\nAnd this is a paragraph'},
     {id: '2', md: testMd},
-    {id: '3', md: testMd2}
+    {id: '3', md: testMd2},
+    {id: '4', md: testMd3}
 ];
 
 // class ReactMd1 extends Component {
