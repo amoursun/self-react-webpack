@@ -1,0 +1,17 @@
+{
+  "options": [
+    {"id": 0, "optionValue": "Select", "optionName": "请选择"},
+    {"id": 1, "optionValue": "Shanghai", "optionName": "上海"},
+    {"id": 2, "optionValue": "Beijing", "optionName": "北京"},
+    {"id": 3, "optionValue": "Tianjin", "optionName": "天津"},
+    {"id": 4, "optionValue": "Xian", "optionName": "西安"},
+    {"id": 5, "optionValue": "Chongqing", "optionName": "重庆"},
+    {"id": 6, "optionValue": "Lanzhou", "optionName": "兰州"},
+    {"id": 7, "optionValue": "Nanjing", "optionName": "南京"},
+    {"id": 8, "optionValue": "Hangzhou", "optionName": "杭州"},
+    {"id": 9, "optionValue": "Xuzhou", "optionName": "徐州"},
+    {"id": 10, "optionValue": "Chengdu", "optionName": "成都"}
+  ],
+  "userName": "哈哈哈"
+
+}
