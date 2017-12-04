@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Generate from './generate';
 import { testMd, testMd2, testMd3 } from '../md/index'
 
 const inputs = [
@@ -27,9 +28,7 @@ export default class Content extends Component {
     render() {
         const { keyIn, names } = this.props;
         let subList = (
-            names.map(name => {
-                return name.id === keyIn && keyIn !== 'test' ? <ReactMarkdown key={keyIn} source={inputs[+keyIn - 1].md} /> : '';
-            })
+            keyIn === 'test' ? <Generate /> : names.map(name =>  name.id === keyIn ? <ReactMarkdown key={keyIn} source={inputs[+keyIn - 1].md} /> : '')
         );
         let ReactMd = (
             <h4>
