@@ -157,9 +157,9 @@ module.exports = {
         port: port,
         // gzip
         compress: true,
-        contentBase: path.join(__dirname, "public"),//mock数据在哪文件下
+        contentBase: path.join(__dirname, "public"),//mock数据在哪文件下 也可以是其他文件下 例如path.join(__dirname, "mock")
         watchContentBase: true, //告诉服务器观察devServer.contentBase选项提供的文件。文件更改将触发整页重新加载
-        // hot: true,
+        // hot: true, //package.json scripts => satrt => 写了 --hot 此处就不需要写了
         open: true,
         // false不跳转 true 跳转404等页面
         historyApiFallback: true,
