@@ -6,7 +6,7 @@ function OptionsList(props) {
     return (
         <div>
             <label>
-                <select value={props.initValue} onChange={props.optionChange}>
+                <select value={props.value} onChange={props.handleChange}>
                     {
                         props.options.map((option) =>
                             <option value={option.optionName} key={option.id}>{option.optionName}</option>
@@ -23,6 +23,7 @@ class UserSelect extends Component {
         super(props);
         this.state = {
             options: [],
+            optionName: '',
             userName: 'ganyanlin'
         }
         ;
@@ -37,6 +38,7 @@ class UserSelect extends Component {
                 let data = res.data;
                 this.setState({
                     options: data.options,
+                    optionName: '',
                     userName: data.userName
                 });
             });
@@ -48,22 +50,15 @@ class UserSelect extends Component {
         });
     }
     handleSelectChange(e) {
-        this.state.options.map(value => {
-            value.optionName === e.target.value ? value.name = e.target.value : delete value.name;
-        });
         this.setState({
-            options: this.state.options
+            optionName: e.target.value
         });
     }
 
     handleSubmit(e) {
-        const { options, userName } = this.state;
-        this.value = '';
-        options.map(option => {
-            option.name ? this.value = option.optionName : '';
-        });
-        if (this.value) {
-            alert(userName + ', Your favorite flavor is: ' + this.value);
+        const { optionName, userName } = this.state;
+        if (optionName && optionName !== '请选择') {
+            alert(userName + ', Your favorite flavor is: ' + optionName);
         }
         else {
             alert('Warning: ' + userName + ', please select your favorite city');
@@ -72,14 +67,12 @@ class UserSelect extends Component {
     }
 
     render() {
-        const { options, userName } = this.state;
-        let valueName = '';
-        options.map(option => option.name ? valueName = option.optionName : '');
+        const { options, optionName, userName } = this.state;
         return (
             <div className="user-left">
                 <h3>UserName: { userName }</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <OptionsList options={options} optionChange={this.handleSelectChange} initValue={options.length > 0 ? (valueName || options[0].optionName) : ''}/>
+                    <OptionsList options={options} handleChange={this.handleSelectChange} value={options.length > 0 ? (optionName || options[0].optionName) : ''}/>
                     <label>
                         Name:
                         <input type="text" value={ userName } onChange={this.handleInputChange} />
