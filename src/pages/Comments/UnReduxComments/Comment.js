@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import Util from './../../../containers/util';
+import { ChangeTime } from './../../../containers/util';
 
 class Comment extends Component {
 
@@ -29,7 +29,7 @@ class Comment extends Component {
         const commentData = this.props.commentData;
         const duration = (+Date.now() - commentData.createdTime) / 1000;
         this.setState({
-            timeString: Util.ChangeTime(duration)
+            timeString: ChangeTime(duration)
         })
     }
 

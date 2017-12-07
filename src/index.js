@@ -70,7 +70,7 @@ const routeConfig = [
                 path: 'markdown',
                 component: Markdown,
                 childRoutes: [
-                    { path: '/markdown/:name', component: Comments }
+                    { path: '/markdown/:name', query: {page: ''}, component: Comments }
                 ]
             }
         ]

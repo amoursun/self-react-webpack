@@ -1,4 +1,4 @@
-const FunObj = {
+module.exports = {
     deepCopy: function (obj) {
         var newObj = obj.constructor === Array ? [] : {};
 
@@ -70,8 +70,25 @@ const FunObj = {
             );
 
         return showTime;
+    },
+
+    // 数据分割成小分  分页展示
+    filterData: function (res, number, digit) {
+        // var data = arguments[0];
+        var totalNum = parseInt(res.length / number) + (res.length % number > 0 ? 1 : 0);
+        var data = [];
+        if (totalNum > digit) {
+            data = res.slice((digit - 1) * number, digit * number);
+        }
+        else {
+            data = res.slice((digit - 1) * number);
+        }
+        return data;
+    },
+
+    filterTotalNum: function (res, number) {
+        return parseInt(res.length / number) + (res.length % number > 0 ? 1 : 0);
     }
 
 };
 
-export default FunObj;
