@@ -11,7 +11,8 @@ export default class Generate extends Component {
             data: [],
             dataNum: [],
             pageTotol: '',
-            pageNumber: ''
+            pageNumber: 1,
+            pageSize: 10
         };
         this.handleChangePage = this.handleChangePage.bind(this);
     };
@@ -28,16 +29,15 @@ export default class Generate extends Component {
         }
         axios.get(`/data/generate.json`) //json-server generate.js 没启动
             .then((res) => {
-                let pageNumber = '';
+                let { pageNumber, pageSize } = this.state;
                 if (res.data.data.length === 0) {
                     return false;
                 }
                 else {
-                    // pageNumber =  isPage !== 1 ? isPage : 1;
                     pageNumber =  isPage;
                 }
-                let totalNum = filterTotalNum(res.data.data, 10);
-                let dataNum = filterData(res.data.data, 10, pageNumber);
+                let totalNum = filterTotalNum(res.data.data, pageSize);
+                let dataNum = filterData(res.data.data, pageSize, pageNumber);
                 isPage === pageNumber ? '' : hashHistory.push(`${name}?page=${pageNumber}`);
                 this.setState({
                     data: res.data.data,
@@ -55,14 +55,14 @@ export default class Generate extends Component {
     };
 
     handleChangePage(num) {
-        const { data, pageNumber } = this.state;
+        const { data, pageNumber, pageSize } = this.state;
         let hash = window.location.hash;
         let name = hash.substring(hash.indexOf('/') + 1, hash.indexOf('?'));
         if (pageNumber === num) {
             return false;
         }
         else {
-            let dataNum = filterData(data, 10, num);
+            let dataNum = filterData(data, pageSize, num);
             hashHistory.push(`${name}?page=${num}`);
             this.setState({
                 dataNum: dataNum,
