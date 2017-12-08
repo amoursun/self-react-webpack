@@ -1,8 +1,25 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Alert, Col, Pagination, Row} from 'react-bootstrap';
+import {
+    Alert,
+    ButtonToolbar,
+    Col,
+    DropdownButton,
+    MenuItem,
+    Pagination,
+    Row
+} from 'react-bootstrap'; //要index.html 引入bootstrap.min.css样式才起作用
 import {filterData, filterTotalNum} from '../../../containers/util';
 import {hashHistory} from 'react-router';
+
+// 每页显示数
+const sizes = [
+    {id: 1, size: 10},
+    {id: 2, size: 20},
+    {id: 3, size: 30},
+    {id: 4, size: 40},
+    {id: 5, size: 50}
+];
 
 export default class Generate extends Component {
     constructor(props) {
@@ -12,9 +29,12 @@ export default class Generate extends Component {
             dataNum: [],
             pageTotol: '',
             pageNumber: 1,
-            pageSize: 10
+            pageSize: 10,
+            openBol: false
         };
         this.handleChangePage = this.handleChangePage.bind(this);
+        this.handleChangeSelect = this.handleChangeSelect.bind(this);
+        this.handleChangeToggle = this.handleChangeToggle.bind(this);
     };
 
     componentDidMount() {
@@ -22,7 +42,7 @@ export default class Generate extends Component {
         var isPage = '', name = '';
         if (hash.indexOf('?') > -1) {
             name = hash.substring(hash.indexOf('/') + 1, hash.indexOf('?'));
-            isPage = isPage = +hash.substring(hash.indexOf('=') + 1);
+            isPage = +hash.substring(hash.indexOf('=') + 1);
         }
         else {
             name = hash.substring(hash.indexOf('/') + 1);
@@ -34,7 +54,7 @@ export default class Generate extends Component {
                     return false;
                 }
                 else {
-                    pageNumber =  isPage;
+                    pageNumber = isPage ? Number(isPage) : 1;
                 }
                 let totalNum = filterTotalNum(res.data.data, pageSize);
                 let dataNum = filterData(res.data.data, pageSize, pageNumber);
@@ -71,18 +91,63 @@ export default class Generate extends Component {
         }
     }
 
+    handleChangeSelect(id) {
+        const { data, pageSize, pageNumber } = this.state;
+        let hash = window.location.hash;
+        let isPage = +hash.substring(hash.indexOf('=') + 1);
+        let name = hash.substring(hash.indexOf('/') + 1, hash.indexOf('?'));
+        if (pageSize !== id) {
+            sizes.map(s => {
+                if (s.id === id) {
+                    let [newData, newPageTotol] = [filterData(data, s.size, 1), filterTotalNum(data, s.size)];
+                    isPage === pageNumber ? '' : hashHistory.push(`${name}?page=1`);
+                    this.setState({
+                        dataNum: newData,
+                        pageTotol: newPageTotol,
+                        pageNumber: 1,
+                        pageSize: s.size
+                    })
+                }
+            });
+        }
+
+        this.handleChangeToggle(true);
+    }
+
+    handleChangeToggle(bol) {
+        this.setState({
+            openBol: bol
+        });
+    }
+
     render() {
-        const { data, dataNum, pageTotol, pageNumber } = this.state;
+        const { data, dataNum, pageTotol, pageNumber, pageSize, openBol } = this.state;
         const errorMsg = data.length === 0;
         const isEmpty = data.length === 0;
         const container = (
             errorMsg ? <Alert bsStyle="warning"><strong>数据加载失败，真相只有一个！</strong>请检查你的网络状态</Alert> :
                             <Col md={12}>
                                 { dataNum.map(info => <span key={info.id}><img src={info.avatar} alt={info.name}/>{info.name}</span>)}
-                                {isEmpty ? '' : <div className="generate-pagination"><Pagination prev="上一页" next="下一页"
-                                                                                               onSelect={this.handleChangePage}
-                                                                                               maxButtons={6} items={pageTotol}
-                                                                                               activePage={pageNumber}/></div>}
+                                {isEmpty ? '' :
+                                    <div className="generate-pagination">
+                                        <Col md={8}>
+                                            <Pagination prev="上一页" next="下一页"
+                                                        onSelect={this.handleChangePage}
+                                                        maxButtons={6}
+                                                        items={pageTotol}
+                                                        activePage={pageNumber}/>
+                                        </Col>
+                                        <Col md={4}>
+                                            <ButtonToolbar>
+                                                <span className="page-show">每页显示</span>
+                                                <DropdownButton bsSize="large" title={pageSize} open={openBol} onToggle={this.handleChangeToggle} onSelect={this.handleChangeSelect} id="dropdown-size-large">
+                                                    {sizes.map(size => <MenuItem key={size.id} eventKey={size.id}>{size.size}</MenuItem>)}
+                                                </DropdownButton>
+                                            </ButtonToolbar>
+                                        </Col>
+                                        <div className="clear"></div>
+                                    </div>
+                                }
                             </Col>
 
         );

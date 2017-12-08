@@ -36,51 +36,17 @@
 
             .generate-pagination{
                 background-color: #fafafa;
-                padding: 8px 15px;
-                margin-top: 20px;
+                padding: 0 15px 5px;
+                margin-top: 15px;
 
                 .pagination {
+                    float: left;
                     li {
-                        margin-top: auto;
-                        font-weight: 400;
-                        font-family: "Microsoft YaHei";
-                        vertical-align: baseline;
-                        cursor: pointer;
                         text-decoration: none;
-                        color: #337ab7;
-                        background-color: #fff;
-                        margin-left: -1px;
-                        border: 1px solid #ddd;
-                        a {
-                            display: inline-block;
-                            width: 30px;
-                            height: 30px;
-                            line-height: 30px;
-                            text-align: center;
-                            &:hover, &:active, &:visited, &:link {
-                                text-decoration: none;
-                            }
-                        }
-                    }
-                    li:first-child, li:last-child {
-                        margin-left: -2px;
-                        a {
-                            display: inline-block;
-                            min-width: 100px;
-                            height: 30px;
-                            line-height: 30px;
-                        }
                         span {
-                            color: #666;
-                            font-size: 16px;
-                            font-style: normal;
                             font-family: "Microsoft YaHei";
-                        }
-                    }
-                    .active {
-                        background-color: #a6b5bf;
-                        a {
-                            color: #666;
+                            color: #5aadb7;
+                            font-style: normal;
                         }
                     }
                     .disabled {
@@ -90,7 +56,106 @@
                         }
                     }
                 }
+
+                .btn-toolbar {
+                    float: right;
+                    margin-top: 10px;
+                    div:first-child {
+                        border-radius: 0;
+                    }
+                    span {
+                        font-size: 16px;
+                        font-family: "Microsoft YaHei";
+                        font-style: normal;
+                        color: #666;
+                    }
+                    .page-show {
+                        float: left;
+                        padding-top: 10px;
+                        padding-right: 4px;
+                    }
+                    .dropdown-menu {
+                        border-radius: 0;
+                        min-width: 100%;
+                        margin-top: 0;
+                    }
+                    #dropdown-size-large {
+                        border-radius: 0;
+                        border-color: #aba8a8;
+                    }
+                }
             }
+
+            //.generate-pagination{
+            //    background-color: #fafafa;
+            //    padding: 6px 15px;
+            //    margin-top: 20px;
+            //    max-height: 60px;
+            //
+            //    .pagination {
+            //        float: left;
+            //        li {
+            //            margin-top: auto;
+            //            font-weight: 400;
+            //            font-family: "Microsoft YaHei";
+            //            vertical-align: baseline;
+            //            cursor: pointer;
+            //            text-decoration: none;
+            //            color: #337ab7;
+            //            background-color: #fff;
+            //            margin-left: -1px;
+            //            border: 1px solid #ddd;
+            //            a {
+            //                display: inline-block;
+            //                width: 30px;
+            //                height: 30px;
+            //                line-height: 30px;
+            //                text-align: center;
+            //                &:hover, &:active, &:visited, &:link {
+            //                    text-decoration: none;
+            //                }
+            //            }
+            //        }
+            //        li:first-child, li:last-child {
+            //            margin-left: -2px;
+            //            a {
+            //                display: inline-block;
+            //                min-width: 100px;
+            //                height: 30px;
+            //                line-height: 30px;
+            //            }
+            //            span {
+            //                color: #666;
+            //                font-size: 16px;
+            //                font-style: normal;
+            //                font-family: "Microsoft YaHei";
+            //            }
+            //        }
+            //        .active {
+            //            background-color: #a6b5bf;
+            //            a {
+            //                color: #666;
+            //            }
+            //        }
+            //        .disabled {
+            //            opacity: .5;
+            //            a span {
+            //                color: #666;
+            //            }
+            //        }
+            //    }
+            //
+            //    .btn-toolbar {
+            //        float: right;
+            //        span {
+            //            font-size: 16px;
+            //            font-family: "Microsoft YaHei";
+            //            font-style: normal;
+            //            padding-right: 5px;
+            //            color: #666;
+            //        }
+            //    }
+            //}
         }
     }
 }
