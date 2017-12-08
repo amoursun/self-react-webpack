@@ -49,6 +49,7 @@ export default class Generate extends Component {
         }
         axios.get(`/data/generate.json`) //json-server generate.js 没启动
             .then((res) => {
+                res.data.data.map(val => val.name = val.name + ' = ' + (++val.id));
                 let { pageNumber, pageSize } = this.state;
                 if (res.data.data.length === 0) {
                     return false;
