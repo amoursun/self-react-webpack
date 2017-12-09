@@ -93,7 +93,7 @@ export default class Generate extends Component {
     }
 
     handleChangeSelect(id) {
-        const { data, pageSize, pageNumber } = this.state;
+        const { data, pageSize } = this.state;
         let hash = window.location.hash;
         let isPage = +hash.substring(hash.indexOf('=') + 1);
         let name = hash.substring(hash.indexOf('/') + 1, hash.indexOf('?'));
@@ -101,7 +101,7 @@ export default class Generate extends Component {
             sizes.map(s => {
                 if (s.id === id) {
                     let [newData, newPageTotol] = [filterData(data, s.size, 1), filterTotalNum(data, s.size)];
-                    isPage === pageNumber ? '' : hashHistory.push(`${name}?page=1`);
+                    isPage === 1 ? '' : hashHistory.push(`${name}?page=1`);
                     this.setState({
                         dataNum: newData,
                         pageTotol: newPageTotol,
