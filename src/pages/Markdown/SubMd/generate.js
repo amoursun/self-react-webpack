@@ -33,16 +33,17 @@ export default class Generate extends Component {
             openBol: false
         };
         this.handleChangePage = this.handleChangePage.bind(this);
-        this.handleChangeSelect = this.handleChangeSelect.bind(this);
-        this.handleChangeToggle = this.handleChangeToggle.bind(this);
+        this.handleChangePageSizeSelect = this.handleChangePageSizeSelect.bind(this);
+        this.handleChangePageSizeToggle = this.handleChangePageSizeToggle.bind(this);
     };
 
     componentDidMount() {
         let hash = window.location.hash;
-        var isPage = '', name = '';
+        var isPage = '', name = '', isPageSize = '';
         if (hash.indexOf('?') > -1) {
             name = hash.substring(hash.indexOf('/') + 1, hash.indexOf('?'));
-            isPage = +hash.substring(hash.indexOf('=') + 1);
+            isPage = +hash.substring(hash.indexOf('=') + 1, hash.indexOf('&'));
+            isPageSize = +hash.substring(hash.indexOf('&') + 1);
         }
         else {
             name = hash.substring(hash.indexOf('/') + 1);
@@ -56,15 +57,17 @@ export default class Generate extends Component {
                 }
                 else {
                     pageNumber = isPage ? Number(isPage) : 1;
+                    pageSize = isPageSize ? Number(isPageSize) : 10;
                 }
                 let totalNum = filterTotalNum(res.data.data, pageSize);
                 let dataNum = filterData(res.data.data, pageSize, pageNumber);
-                isPage === pageNumber ? '' : hashHistory.push(`${name}?page=${pageNumber}`);
+                isPage === pageNumber ? '' : hashHistory.push(`${name}?page=${pageNumber}&${pageSize}`);
                 this.setState({
                     data: res.data.data,
                     dataNum: dataNum,
                     pageTotol: totalNum,
-                    pageNumber: pageNumber
+                    pageNumber: pageNumber,
+                pageSize: pageSize
                 });
             });
         // axios.get(`http://localhost:3000/people`) //mock下 json-server generate.js 启动
@@ -84,7 +87,7 @@ export default class Generate extends Component {
         }
         else {
             let dataNum = filterData(data, pageSize, num);
-            hashHistory.push(`${name}?page=${num}`);
+            hashHistory.push(`${name}?page=${num}&${pageSize}`);
             this.setState({
                 dataNum: dataNum,
                 pageNumber: num
@@ -92,7 +95,7 @@ export default class Generate extends Component {
         }
     }
 
-    handleChangeSelect(id) {
+    handleChangePageSizeSelect(id) {
         const { data, pageSize } = this.state;
         let hash = window.location.hash;
         let isPage = +hash.substring(hash.indexOf('=') + 1);
@@ -101,7 +104,7 @@ export default class Generate extends Component {
             sizes.map(s => {
                 if (s.id === id) {
                     let [newData, newPageTotol] = [filterData(data, s.size, 1), filterTotalNum(data, s.size)];
-                    isPage === 1 ? '' : hashHistory.push(`${name}?page=1`);
+                    isPage === 1 ? '' : hashHistory.push(`${name}?page=1&${s.size}`);
                     this.setState({
                         dataNum: newData,
                         pageTotol: newPageTotol,
@@ -112,10 +115,10 @@ export default class Generate extends Component {
             });
         }
 
-        this.handleChangeToggle(true);
+        this.handleChangePageSizeToggle(true);
     }
 
-    handleChangeToggle(bol) {
+    handleChangePageSizeToggle(bol) {
         this.setState({
             openBol: bol
         });
@@ -141,7 +144,7 @@ export default class Generate extends Component {
                                         <Col md={4}>
                                             <ButtonToolbar>
                                                 <span className="page-show">每页显示</span>
-                                                <DropdownButton bsSize="large" title={pageSize} open={openBol} onToggle={this.handleChangeToggle} onSelect={this.handleChangeSelect} id="dropdown-size-large">
+                                                <DropdownButton bsSize="large" title={pageSize} open={openBol} onToggle={this.handleChangePageSizeToggle} onSelect={this.handleChangePageSizeSelect} id="dropdown-size-large">
                                                     {sizes.map(size => <MenuItem key={size.id} eventKey={size.id}>{size.size}</MenuItem>)}
                                                 </DropdownButton>
                                             </ButtonToolbar>
