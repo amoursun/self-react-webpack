@@ -48,34 +48,33 @@ export default class Generate extends Component {
         else {
             name = hash.substring(hash.indexOf('/') + 1);
         }
+
+        // axios.get(`http://localhost:3000/people`) //mock下 json-server generate.js 启动
+        //     .then((res) => {
+        //         var result = res.data;
         axios.get(`/data/generate.json`) //json-server generate.js 没启动
             .then((res) => {
-                res.data.data.map(val => val.name = val.name + ' = ' + (++val.id));
+                var result = res.data.data;
+                result.map(val => val.name = val.name + ' = ' + (++val.id));
                 let { pageNumber, pageSize } = this.state;
-                if (res.data.data.length === 0) {
+                if (result.length === 0) {
                     return false;
                 }
                 else {
                     pageNumber = isPage ? Number(isPage) : 1;
                     pageSize = isPageSize ? Number(isPageSize) : 10;
                 }
-                let totalNum = filterTotalNum(res.data.data, pageSize);
-                let dataNum = filterData(res.data.data, pageSize, pageNumber);
+                let totalNum = filterTotalNum(result, pageSize);
+                let dataNum = filterData(result, pageSize, pageNumber);
                 isPage === pageNumber ? '' : hashHistory.push(`${name}?page=${pageNumber}&${pageSize}`);
                 this.setState({
-                    data: res.data.data,
+                    data: result,
                     dataNum: dataNum,
                     pageTotol: totalNum,
                     pageNumber: pageNumber,
                 pageSize: pageSize
                 });
             });
-        // axios.get(`http://localhost:3000/people`) //mock下 json-server generate.js 启动
-        //     .then((res) => {
-        //         this.setState({
-        //             data: res.data
-        //         });
-        //     });
     };
 
     handleChangePage(num) {
