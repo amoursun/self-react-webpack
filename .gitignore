@@ -5,6 +5,7 @@
 /json-test
 # dependencies
 /node_modules
+/reactPagination
 
 # testing
 /coverage
