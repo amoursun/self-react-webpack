@@ -35,13 +35,13 @@ export default class NewShopTables extends Component {
         const { data } = this.state;
         let newCopyData = new Array();
         copyData.map(copy => {
-            let obj = Object.create(copy)
+            let obj = Object.create(copy);
             obj.name = 'copy' + Math.random().toString(36).substring(8) + '-' + obj.name;
             obj.id = dataGenerate().id;
             obj.select = false;
             newCopyData.push(obj);
-        })
-        EventEmitter.dispatch('changeItem', false)
+        });
+        EventEmitter.dispatch('changeItem', false);
         this.setState({
             data: data.concat(newCopyData)
         })
@@ -51,7 +51,7 @@ export default class NewShopTables extends Component {
         this.setState({
             data
         })
-    }
+    };
 
     add = () => {
         const  { data } = this.state;
@@ -63,9 +63,9 @@ export default class NewShopTables extends Component {
 
     deletes = (obj) => {
         const  { data } = this.state;
-        JSON.stringify(obj) === "{}" ? alert('删除内容不能为空') : this.setState({
+        JSON.stringify(obj) === "{}" ? alert('删除内容不能为空') : (EventEmitter.dispatch('changeItem', false), this.setState({
             data: objFunc(data, obj)
-        })
+        }));
     };
 
     edit = (info) => {
@@ -97,7 +97,7 @@ export default class NewShopTables extends Component {
         this.setState({
             data: data
         });
-    }
+    };
 
     del = (info) => {
         const  { data } = this.state;
