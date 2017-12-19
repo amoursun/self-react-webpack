@@ -24,6 +24,8 @@
     "redux-form": "^7.1.1",
     "redux-immutablejs": "0.0.8",
     "redux-logger": "^3.0.6",
+    "rsuite": "^2.0.12",
+    "rsuite-table": "^2.1.1",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "whatwg-fetch": "^2.0.3",
     "zan-shuai": "^1.1.1"
