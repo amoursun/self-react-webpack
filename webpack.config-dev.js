@@ -2,14 +2,12 @@ var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var host = '127.0.0.1';
-var port = '8800';
+var port = '8808';
 
-
-
-module.exports = {
+var configDev = {
     context: process.cwd(), // process.cwd()是nodejs的启动目录，确定webpack编译上下文，和其他没有任何关系
     //页面入口文件配置
     entry: [
@@ -170,3 +168,5 @@ module.exports = {
         stats: 'errors-only' //可以精确地控制显示的包信息
     }
 };
+
+module.exports = configDev;
