@@ -56,3 +56,5 @@ a webpack3 scaffold .
 ### html
 + 美化压缩，可选删除注释、空白符与换行
 + 打包生成新的独立的 html 文件
+
+"webpack-dev-server": "^2.8.2" 加上前面最新版, 2.10.1 会报错
