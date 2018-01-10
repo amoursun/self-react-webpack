@@ -21,8 +21,8 @@ function getParam(name, url) {
     if (!url) url = window.location.href;
     // 当遇到name[xx]时，对方括号做一下转义为 name\[xxx\]，因为下面还需要使用name做正则
     name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-    var results = regex.exec(url);
+    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+    let results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
@@ -37,11 +37,11 @@ function getParam(name, url) {
 function setParam(name, val, url) {
     if(typeof name !== 'string') return false;
     if (!url) url = window.location.href;
-    var _name = name.replace(/[\[\]]/g, '\\$&');
-    var value = name + '=' + encodeURIComponent(val);
-    var regex = new RegExp(_name + '=[^&]*');
-    var urlArr = url.split('#');
-    var result = '';
+    let _name = name.replace(/[\[\]]/g, '\\$&');
+    let value = name + '=' + encodeURIComponent(val);
+    let regex = new RegExp(_name + '=[^&]*');
+    let urlArr = url.split('#');
+    let result = '';
 
     if(regex.exec(url)){
         result =  url.replace(regex, value);
@@ -61,10 +61,10 @@ function setParam(name, val, url) {
 function removeParam(name, url) {
     if(typeof name !== 'string') return false;
     if (!url) url = window.location.href;
-    var urlparts = url.split('?');
-    var prefix = encodeURIComponent(name + '=');
-    var pars = urlparts[1].split(/[&;]/g);
-    var i = 0, len = pars.length;
+    let urlparts = url.split('?');
+    let prefix = encodeURIComponent(name + '=');
+    let pars = urlparts[1].split(/[&;]/g);
+    let i = 0, len = pars.length;
 
     for (; i < len; i++) {
         if (encodeURIComponent(pars[i]).lastIndexOf(prefix, 0) !== -1) {
@@ -85,13 +85,13 @@ function removeParam(name, url) {
  */
 function getParams(names, url) {
     if(typeof name !== 'string') return false;
-    var names = names.split(' ');
-    var result = {};
-    var i = 0,
-        len = names.length;
+    let newNames = names.split(' ');
+    let result = {};
+    let i = 0,
+        len = newNames.length;
     if (names.length === 0) return false;
     for (; i < len; i++) {
-        result[names[i]] = getParam(names[i], url);
+        result[newNames[i]] = getParam(newNames[i], url);
     }
     return result;
 }
@@ -103,9 +103,9 @@ function getParams(names, url) {
  * @return {[String|Boolean]}
  */
 function setParams(obj, url) {
-    var result = url || '';
+    let result = url || '';
     if (Object.prototype.toString.call(obj) !== '[object Object]') return false;
-    for (var name in obj) {
+    for (let name in obj) {
         result = setParam(name, obj[name], result);
     }
     return result;
@@ -118,14 +118,14 @@ function setParams(obj, url) {
  * @return {[String|Boolean]}
  */
 function removeParams(names, url) {
-    var result = url || '';
-    var names = names.split(' ');
-    var i = 0,
-        len = names.length;
-    if (names.length === 0) return false;
+    let result = url || '';
+    let newNames = names.split(' ');
+    let i = 0,
+        len = newNames.length;
+    if (newNames.length === 0) return false;
 
     for (; i < len; i++) {
-        result = removeParam(names[i], result);
+        result = removeParam(newNames[i], result);
     }
     return result;
 }
@@ -136,7 +136,11 @@ function removeParams(names, url) {
  * @return {[String]}
  */
 function getHash(url) {
-    return decodeURIComponent(url ? url.substring(url.indexOf('#') + 1) : window.location.hash.substr(1));
+    return decodeURIComponent(
+        url ?
+            url.substring(url.indexOf('#') + 1) :
+            window.location.hash.substr(1)
+    );
 }
 
 /**
