@@ -14,6 +14,7 @@ import Comments from './pages/Comments/MainComments';
 import BrotherNews from './pages/BrotherNews/BrotherNews';
 import NewShopTable from './pages/NewShopTable/NewShopTable';
 import Markdown from './pages/Markdown/Markdown';
+import Inmap from './pages/Inmap/index';
 
 
 const routeConfig = [
@@ -71,6 +72,13 @@ const routeConfig = [
                 component: Markdown,
                 childRoutes: [
                     { path: '/markdown/:name', query: {page: ''}, component: Comments }
+                ]
+            },
+            {
+                path: 'inmap',
+                component: Inmap,
+                childRoutes: [
+                    { path: '/inmap/:name', query: {page: ''}, component: Comments }
                 ]
             }
         ]

@@ -12,7 +12,7 @@ var configDev = {
     //页面入口文件配置
     entry: [
         "babel-polyfill",
-        path.resolve(__dirname, "./src/index.js")
+        path.resolve(__dirname, "./pages.src/index.js")
     ],
     // target: 'node',
     output: {
@@ -80,7 +80,7 @@ var configDev = {
             },
             {
                 test: /\.html$/,
-                loader: 'html-loader?attrs=img:src'
+                loader: 'html-loader?attrs=img:pages.src'
             },
             {
                 test: /\.js$/,

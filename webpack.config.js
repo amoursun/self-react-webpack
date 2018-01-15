@@ -11,7 +11,7 @@
 //     //页面入口文件配置
 //     entry: [
 //         "babel-polyfill",
-//         path.resolve(__dirname, "src/index.js")
+//         path.resolve(__dirname, "pages.src/index.js")
 //     ],
 //     output: {
 //         path: path.resolve(__dirname, 'build'),
@@ -50,7 +50,7 @@
 //             },
 //             {
 //                 test: /\.(html)$/,
-//                 loader: 'html-loader?attrs=img:src'
+//                 loader: 'html-loader?attrs=img:pages.src'
 //             },
 //             {
 //                 test: /\.jsx?$/,
@@ -152,7 +152,7 @@ module.exports = {
     //页面入口文件配置
     entry: [
         "babel-polyfill",
-        path.resolve(__dirname, "src/index.js")
+        path.resolve(__dirname, "pages.src/index.js")
     ],
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -190,7 +190,7 @@ module.exports = {
             },
             {
                 test: /\.(html)$/,
-                loader: 'html-loader?attrs=img:src'
+                loader: 'html-loader?attrs=img:pages.src'
             },
             {
                 test: /\.jsx?$/,

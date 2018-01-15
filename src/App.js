@@ -61,6 +61,11 @@ class App extends Component {
                             Markdown
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/inmap" activeStyle={{color: '#d22432'}}>
+                            Inmap
+                        </Link>
+                    </li>
                 </ul>
             </div>
             {this.props.children}

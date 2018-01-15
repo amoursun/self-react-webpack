@@ -228,7 +228,7 @@
                 <div className="Comment">
                   <div className="UserInfo">
                     <img className="Avatar"
-                      src={props.author.avatarUrl}
+                      pages.src={props.author.avatarUrl}
                       alt={props.author.name}
                     />
                     <div className="UserInfo-name">
